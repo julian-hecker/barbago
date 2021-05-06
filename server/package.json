@@ -25,6 +25,7 @@
     "apidoc": {
         "title": "Barbago API Documentation",
         "url": "https://barbago.herokuapp.com",
+        "useHostAsSampleUrl": false,
         "sampleUrl": "https://barbago.herokuapp.com"
     }
 }

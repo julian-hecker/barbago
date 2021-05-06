@@ -7,7 +7,12 @@ define({ "api": [
     "group": "Barber",
     "version": "0.0.0",
     "filename": "routes/barber.route.js",
-    "groupTitle": "Barber"
+    "groupTitle": "Barber",
+    "sampleRequest": [
+      {
+        "url": "https://barbago.herokuapp.com/api/barber/create"
+      }
+    ]
   },
   {
     "type": "DELETE",
@@ -30,7 +35,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "routes/barber.route.js",
-    "groupTitle": "Barber"
+    "groupTitle": "Barber",
+    "sampleRequest": [
+      {
+        "url": "https://barbago.herokuapp.com/api/barber/:id"
+      }
+    ]
   },
   {
     "type": "get",
@@ -40,7 +50,12 @@ define({ "api": [
     "group": "Barber",
     "version": "0.0.0",
     "filename": "routes/barber.route.js",
-    "groupTitle": "Barber"
+    "groupTitle": "Barber",
+    "sampleRequest": [
+      {
+        "url": "https://barbago.herokuapp.com/api/barber/"
+      }
+    ]
   },
   {
     "type": "get",
@@ -63,7 +78,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "routes/barber.route.js",
-    "groupTitle": "Barber"
+    "groupTitle": "Barber",
+    "sampleRequest": [
+      {
+        "url": "https://barbago.herokuapp.com/api/barber/:id"
+      }
+    ]
   },
   {
     "type": "GET",
@@ -73,7 +93,12 @@ define({ "api": [
     "group": "Barber",
     "version": "0.0.0",
     "filename": "routes/barber.route.js",
-    "groupTitle": "Barber"
+    "groupTitle": "Barber",
+    "sampleRequest": [
+      {
+        "url": "https://barbago.herokuapp.com/api/barber/search"
+      }
+    ]
   },
   {
     "type": "PUT",
@@ -96,6 +121,11 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "routes/barber.route.js",
-    "groupTitle": "Barber"
+    "groupTitle": "Barber",
+    "sampleRequest": [
+      {
+        "url": "https://barbago.herokuapp.com/api/barber/:id"
+      }
+    ]
   }
 ] });

@@ -1,0 +1,21 @@
+{
+    "name": "barbago-server",
+    "version": "0.0.1",
+    "main": "./app.js",
+    "type": "module",
+    "scripts": {
+        "start": "node ./app.js",
+        "dev": "nodemon ./app.js"
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^8.2.0",
+        "express": "^4.16.4",
+        "mysql2": "^2.2.5",
+        "sequelize": "^6.6.2"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.7",
+        "typescript": "^4.2.4"
+    }
+}

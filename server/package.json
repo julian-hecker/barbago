@@ -1,11 +1,14 @@
 {
     "name": "barbago-server",
     "version": "0.0.1",
+    "description": "Barbago API and backend",
     "main": "./app.js",
     "type": "module",
+    "license": "MIT",
     "scripts": {
         "start": "node ./app.js",
-        "dev": "nodemon ./app.js"
+        "dev": "nodemon ./app.js",
+        "docs": "apidoc -i routes/ -o ../docs"
     },
     "dependencies": {
         "cors": "^2.8.5",
@@ -15,7 +18,13 @@
         "sequelize": "^6.6.2"
     },
     "devDependencies": {
+        "apidoc": "^0.27.1",
         "nodemon": "^2.0.7",
         "typescript": "^4.2.4"
+    },
+    "apidoc": {
+        "title": "Barbago API Documentation",
+        "url": "https://barbago.herokuapp.com",
+        "sampleUrl": "https://barbago.herokuapp.com"
     }
 }

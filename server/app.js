@@ -1,10 +1,16 @@
 import express from 'express';
 import cors from 'cors';
-
 import dotenv from 'dotenv';
 if (process.env.NODE_ENV !== 'production') {
     dotenv.config();
 }
+
+import db from './config/database.js';
+import router from './routes/index.js';
+
+db.authenticate()
+    .then(() => console.log('DB Connected'))
+    .catch((err) => console.error('DB Not Connected: ', err));
 
 const app = express();
 
@@ -13,11 +19,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('../client/build'));
 app.use(cors());
 
-// import routes from './routes';
-// app.use('/', routes);
-app.use('/api', (req, res) => {
-    res.json(123);
-});
+// Handles all backend API requests
+app.use('/api', router);
+
+// Serves the React Application
 app.use('/', (req, res) => {
     res.sendFile('');
 });

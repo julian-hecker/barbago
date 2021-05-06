@@ -6,7 +6,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 import db from './config/database.js';
-import router from './routes/index.js';
+import router from './routes/routes.js';
 
 db.authenticate()
     .then(() => console.log('DB Connected'))

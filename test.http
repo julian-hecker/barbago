@@ -1,0 +1,29 @@
+GET http://localhost:3001/api/barber/search HTTP/1.1
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE2LCJpYXQiOjE2MjAzODg3MDUsImV4cCI6MTYyMDM4OTYwNX0.u-bDKLk_rJRDv2AK441ijdok7y81HObIobklgvRng4I
+###
+POST http://localhost:3001/api/user/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "aaaa",
+    "password": "aaaa"
+}
+
+###
+POST http://localhost:3001/api/user/register HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE2LCJpYXQiOjE2MjAzODg3MDUsImV4cCI6MTYyMDM4OTYwNX0.u-bDKLk_rJRDv2AK441ijdok7y81HObIobklgvRng4I
+
+{
+    "email": "ruuu",
+    "password": "ruuu",
+    "first_name": "ruuu",
+    "last_name": "ruuu"
+}
+
+###
+
+POST http://localhost:3001/api/user/refresh_token HTTP/1.1
+
+###
+DELETE http://localhost:3001/api/user/logout

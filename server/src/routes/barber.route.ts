@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { authenticateToken } from '../utils/auth';
 import {
     createBarber,
     deleteBarber,
@@ -10,7 +11,7 @@ import {
 
 const barberRouter = Router();
 
-barberRouter.get('/search', searchBarbers);
+barberRouter.get('/search', authenticateToken, searchBarbers);
 
 barberRouter.get('/:id', getBarber);
 

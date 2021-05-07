@@ -1,13 +1,7 @@
 import { Sequelize } from 'sequelize';
+import { DB_URI } from '../config/config';
 
-import dotenv from 'dotenv';
-if (process.env.NODE_ENV !== 'production') {
-    dotenv.config();
-}
-
-const connectionURI = process.env.BARBAGO_DB_URI;
-
-const db = new Sequelize(connectionURI, {
+const sequelize = new Sequelize(DB_URI, {
     logging:
         process.env.NODE_ENV === 'production' ? false : console.log,
     pool: {
@@ -18,4 +12,4 @@ const db = new Sequelize(connectionURI, {
     },
 });
 
-export default db;
+export default sequelize;

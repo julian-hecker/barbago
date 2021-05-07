@@ -1,12 +1,12 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '../config/database';
 
-class Barber extends Model {
+class User extends Model {
     public id!: number;
     public email!: string;
+    public password!: string;
     public first_name!: string;
     public last_name!: string;
-    public phone?: string;
     public readonly createdAt!: Date;
     public readonly updatedAt!: Date;
 
@@ -15,7 +15,7 @@ class Barber extends Model {
     }
 }
 
-Barber.init(
+User.init(
     {
         email: {
             type: DataTypes.STRING,
@@ -30,15 +30,15 @@ Barber.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        phone: {
+        password: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
         },
     },
     {
         sequelize,
-        tableName: 'barber',
+        tableName: 'user',
     },
 );
 
-export default Barber;
+export default User;

@@ -5,15 +5,6 @@ const Barber = db.define('barber', {
     title: {
         type: Sequelize.STRING,
     },
-    title: {
-        type: Sequelize.STRING,
-    },
-    title: {
-        type: Sequelize.STRING,
-    },
-    title: {
-        type: Sequelize.STRING,
-    },
 });
 
 export default Barber;

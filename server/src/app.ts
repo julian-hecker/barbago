@@ -1,16 +1,16 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 if (process.env.NODE_ENV !== 'production') {
     dotenv.config();
 }
 
-import db from './config/database.js';
-import router from './routes/routes.js';
+import db from './config/database';
+import router from './routes/routes';
 
 db.authenticate()
     .then(() => console.log('DB Connected'))
-    .catch((err) => console.error('DB Not Connected: ', err));
+    .catch((err: any) => console.error('DB Not Connected: ', err));
 
 const app = express();
 
@@ -23,7 +23,7 @@ app.use(cors());
 app.use('/api', router);
 
 // Serves the React Application
-app.use('/', (req, res) => {
+app.use('/', (req: Request, res: Response) => {
     res.sendFile('');
 });
 

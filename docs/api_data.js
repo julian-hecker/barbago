@@ -1,23 +1,23 @@
 define({ "api": [
   {
-    "type": "post",
-    "url": "/api/barber/create",
-    "title": "create barber",
+    "type": "POST",
+    "url": "/api/barber/",
+    "title": "Create Barber",
     "name": "createBarber",
     "group": "Barber",
     "version": "0.0.0",
-    "filename": "routes/barber.route.js",
+    "filename": "src/controllers/barber.controller.ts",
     "groupTitle": "Barber",
     "sampleRequest": [
       {
-        "url": "https://barbago.herokuapp.com/api/barber/create"
+        "url": "https://barbago.herokuapp.com/api/barber/"
       }
     ]
   },
   {
     "type": "DELETE",
     "url": "/api/barber/:id",
-    "title": "delete one barber",
+    "title": "Delete Barber",
     "name": "deleteBarber",
     "group": "Barber",
     "parameter": {
@@ -34,7 +34,7 @@ define({ "api": [
       }
     },
     "version": "0.0.0",
-    "filename": "routes/barber.route.js",
+    "filename": "src/controllers/barber.controller.ts",
     "groupTitle": "Barber",
     "sampleRequest": [
       {
@@ -43,13 +43,13 @@ define({ "api": [
     ]
   },
   {
-    "type": "get",
+    "type": "GET",
     "url": "/api/barber/",
-    "title": "get all barbers",
+    "title": "Get All Barbers",
     "name": "getAllBarbers",
     "group": "Barber",
     "version": "0.0.0",
-    "filename": "routes/barber.route.js",
+    "filename": "src/controllers/barber.controller.ts",
     "groupTitle": "Barber",
     "sampleRequest": [
       {
@@ -58,9 +58,9 @@ define({ "api": [
     ]
   },
   {
-    "type": "get",
+    "type": "GET",
     "url": "/api/barber/:id",
-    "title": "get one barber",
+    "title": "Get Barber",
     "name": "getBarber",
     "group": "Barber",
     "parameter": {
@@ -77,7 +77,7 @@ define({ "api": [
       }
     },
     "version": "0.0.0",
-    "filename": "routes/barber.route.js",
+    "filename": "src/controllers/barber.controller.ts",
     "groupTitle": "Barber",
     "sampleRequest": [
       {
@@ -88,11 +88,11 @@ define({ "api": [
   {
     "type": "GET",
     "url": "/api/barber/search",
-    "title": "search for barbers",
+    "title": "Search Barbers",
     "name": "searchBarbers",
     "group": "Barber",
     "version": "0.0.0",
-    "filename": "routes/barber.route.js",
+    "filename": "src/controllers/barber.controller.ts",
     "groupTitle": "Barber",
     "sampleRequest": [
       {
@@ -103,7 +103,7 @@ define({ "api": [
   {
     "type": "PUT",
     "url": "/api/barber/:id",
-    "title": "update one barber",
+    "title": "Update Barber",
     "name": "updateBarber",
     "group": "Barber",
     "parameter": {
@@ -120,7 +120,7 @@ define({ "api": [
       }
     },
     "version": "0.0.0",
-    "filename": "routes/barber.route.js",
+    "filename": "src/controllers/barber.controller.ts",
     "groupTitle": "Barber",
     "sampleRequest": [
       {

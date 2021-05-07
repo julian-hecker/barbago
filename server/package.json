@@ -2,13 +2,14 @@
     "name": "barbago-server",
     "version": "0.0.1",
     "description": "Barbago API and backend",
-    "main": "./app.js",
-    "type": "module",
+    "main": "./src/app.ts",
     "license": "MIT",
     "scripts": {
-        "start": "node ./app.js",
-        "dev": "nodemon ./app.js",
-        "docs": "apidoc -i routes/ -o ../docs"
+        "start": "node ./dist/app.js",
+        "build": "tsc",
+        "dev": "nodemon ./src/app.ts",
+        "docs:watch": "apidoc -i src/controllers/ -o ../docs --watch",
+        "docs": "apidoc -i src/controllers/ -o ../docs"
     },
     "dependencies": {
         "cors": "^2.8.5",
@@ -18,14 +19,22 @@
         "sequelize": "^6.6.2"
     },
     "devDependencies": {
+        "@types/cors": "^2.8.10",
+        "@types/dotenv": "^8.2.0",
+        "@types/express": "^4.17.11",
+        "@types/node": "^15.0.2",
+        "@types/validator": "^13.1.3",
         "apidoc": "^0.27.1",
         "nodemon": "^2.0.7",
+        "ts-node": "^9.1.1",
         "typescript": "^4.2.4"
     },
     "apidoc": {
+        "name": "Barbago API Docs",
+        "description": "Documentation for the Barbago API and Backend",
         "title": "Barbago API Documentation",
         "url": "https://barbago.herokuapp.com",
-        "useHostAsSampleUrl": false,
-        "sampleUrl": "https://barbago.herokuapp.com"
+        "sampleUrl": "https://barbago.herokuapp.com",
+        "useHostAsSampleUrl": false
     }
 }

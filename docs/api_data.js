@@ -48,6 +48,26 @@ define({ "api": [
     "title": "Get All Barbers",
     "name": "getAllBarbers",
     "group": "Barber",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "limit",
+            "description": "<p>Optional number of results per page</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "page",
+            "description": "<p>Optional page number of results</p>"
+          }
+        ]
+      }
+    },
     "version": "0.0.0",
     "filename": "src/controllers/barber.controller.ts",
     "groupTitle": "Barber",

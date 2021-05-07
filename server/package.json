@@ -6,7 +6,8 @@
     "license": "MIT",
     "scripts": {
         "start": "node ./dist/app.js",
-        "build": "tsc",
+        "tsc": "tsc",
+        "build": "npm run tsc",
         "dev": "nodemon ./src/app.ts",
         "docs:watch": "apidoc -i src/controllers/ -o ../docs --watch",
         "docs": "apidoc -i src/controllers/ -o ../docs"

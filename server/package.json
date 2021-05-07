@@ -6,7 +6,7 @@
     "license": "MIT",
     "scripts": {
         "start": "node ./dist/app.js",
-        "build": "npx tsc",
+        "build": "tsc",
         "dev": "nodemon ./src/app.ts",
         "docs:watch": "apidoc -i src/controllers/ -o ../docs --watch",
         "docs": "apidoc -i src/controllers/ -o ../docs"

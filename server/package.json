@@ -2,7 +2,7 @@
     "name": "barbago-server",
     "version": "0.0.1",
     "description": "Barbago API and backend",
-    "main": "./src/app.ts",
+    "main": "./src/app",
     "license": "MIT",
     "scripts": {
         "start": "node ./dist/app.js",
@@ -30,9 +30,6 @@
         "nodemon": "^2.0.7",
         "ts-node": "^9.1.1"
     },
-    "engines": {
-        "node": "14.x"
-    },
     "apidoc": {
         "name": "Barbago API Docs",
         "description": "Documentation for the Barbago API and Backend",
@@ -40,8 +37,5 @@
         "url": "https://barbago.herokuapp.com",
         "sampleUrl": "https://barbago.herokuapp.com",
         "useHostAsSampleUrl": false
-    },
-    "cacheDirectories": [
-        "node_modules"
-    ]
+    }
 }

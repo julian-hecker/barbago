@@ -29,6 +29,9 @@
         "ts-node": "^9.1.1",
         "typescript": "^4.2.4"
     },
+    "engines": {
+        "node": "14.x"
+    },
     "apidoc": {
         "name": "Barbago API Docs",
         "description": "Documentation for the Barbago API and Backend",

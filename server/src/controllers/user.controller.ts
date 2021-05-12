@@ -19,7 +19,6 @@ const sendTokens = (
 ) => {
     res.cookie('refreshtoken', refreshToken, {
         httpOnly: true,
-        path: '/api/user/refresh_token',
     });
     return res.status(200).json({ accessToken });
 };
@@ -76,18 +75,18 @@ export const loginUser = async (req, res) => {
 };
 
 export const logoutUser = (req, res) => {
-    res.clearCookie('refreshtoken');
+    res.cookie('refreshtoken', '');
     return res.status(200).send('Logged out');
 };
 
 export const refreshToken = async (req, res) => {
     const token = req.cookies['refreshtoken'];
-    console.log(token);
     if (!token) return res.status(401).json({ accesstoken: '' });
     try {
         const payload: any = verify(token, JWT_SECRET);
         const user = await User.findByPk(payload.user.id);
         if (!user) return res.status(401).json({ accesstoken: '' });
+        // todo: see if refreshtoken == user.refreshtoken
         const accessToken = createAccessToken(user.id);
         const refreshToken = createRefreshToken(user.id);
         // TO DO: Store refreshtoken in database under user

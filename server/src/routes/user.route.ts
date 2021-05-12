@@ -7,7 +7,7 @@ userRouter.post('/register', registerUser);
 
 userRouter.post('/login', loginUser);
 
-userRouter.delete('/logout', logoutUser);
+userRouter.post('/logout', logoutUser);
 
 userRouter.post('/refresh_token', refreshToken);
 

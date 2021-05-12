@@ -18,7 +18,7 @@ app.use(cors());
 app.use('/api', router);
 
 // Serves the React Application
-app.use('/', (req: Request, res: Response) => {
+app.use('*', (req: Request, res: Response) => {
     res.sendFile('');
 });
 

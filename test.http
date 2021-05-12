@@ -15,10 +15,10 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE2LCJpYXQiOjE2MjAzODg3MDUsImV4cCI6MTYyMDM4OTYwNX0.u-bDKLk_rJRDv2AK441ijdok7y81HObIobklgvRng4I
 
 {
-    "email": "ruuu",
-    "password": "ruuu",
-    "first_name": "ruuu",
-    "last_name": "ruuu"
+    "email": "ruuuuu",
+    "password": "ruuuuu",
+    "first_name": "ruuuuu",
+    "last_name": "ruuuuu"
 }
 
 ###
@@ -26,4 +26,4 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE2LCJpY
 POST http://localhost:3001/api/user/refresh_token HTTP/1.1
 
 ###
-DELETE http://localhost:3001/api/user/logout
+POST http://localhost:3001/api/user/logout

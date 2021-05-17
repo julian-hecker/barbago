@@ -1,7 +1,7 @@
 {
     "apps": [
         {
-            "appId": "a0000a0a",
+            "appId": "27acb86b",
             "root": "client",
             "dependencyInstallCommand": "npm install",
             "webBuildCommand": "npm run build"

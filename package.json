@@ -8,6 +8,8 @@
         "build:client": "npm run build --prefix client",
         "build:server": "npm run build --prefix server",
         "build": "run-p build:*",
+        "postbuild": "npm run build:android --prefix client",
+        "heroku-postbuild": "run-p build:*",
         "start": "npm run start --prefix server",
         "dev:client": "npm start --prefix client",
         "dev:server": "npm run dev --prefix server",

@@ -71,6 +71,8 @@ typings/
 # dotenv environment variables file
 .env
 .env.test
+.env*.local
+!client/.env
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -103,3 +105,6 @@ build
 
 # TernJS port file
 .tern-port
+
+# Formatted icons and splash images
+client/resources/android

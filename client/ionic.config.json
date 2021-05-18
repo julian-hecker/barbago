@@ -1,0 +1,7 @@
+{
+  "name": "barbago-client",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

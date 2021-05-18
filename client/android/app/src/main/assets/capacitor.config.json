@@ -6,8 +6,13 @@
   "webDir": "build",
   "plugins": {
     "SplashScreen": {
-      "launchShowDuration": 0
+      "launchShowDuration": 3000,
+      "showSpinner": true
     }
   },
-  "cordova": {}
+  "cordova": {},
+  "server": {
+    "url": "http://10.0.1.97:8100",
+    "cleartext": true
+  }
 }

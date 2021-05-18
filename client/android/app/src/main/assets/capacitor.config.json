@@ -10,9 +10,5 @@
       "showSpinner": true
     }
   },
-  "cordova": {},
-  "server": {
-    "url": "http://10.0.1.97:8100",
-    "cleartext": true
-  }
+  "cordova": {}
 }

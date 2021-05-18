@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize';
-import { DB_URI } from '../config/config';
+import { DB_URI } from '.';
 
 const sequelize = new Sequelize(DB_URI, {
     logging:

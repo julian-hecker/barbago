@@ -1,6 +1,6 @@
 import { genSalt, hash, compare } from 'bcrypt';
 import { sign, verify } from 'jsonwebtoken';
-import { JWT_SECRET } from '../config/config';
+import { JWT_SECRET } from '../config';
 
 import User from '../models/User';
 

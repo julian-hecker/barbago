@@ -4,12 +4,12 @@ import passport from './passport';
 
 const router = Router();
 
-router.get('/user', (req, res) => {
+router.get('/user', (req: any, res: any) => {
   if (req.user) return res.json({ user: req.user });
   else return res.status(404).json({ user: null });
 });
 
-router.get('/logout', (req, res) => {
+router.get('/logout', (req: any, res: any) => {
   res.clearCookie('connect.sid');
   req.logout();
   return res.json({ message: 'logged out' });

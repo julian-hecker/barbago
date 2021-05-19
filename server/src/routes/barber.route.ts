@@ -11,7 +11,7 @@ import {
 
 const barberRouter = Router();
 
-barberRouter.get('/search', authenticateToken, searchBarbers);
+barberRouter.get('/search', searchBarbers);
 
 barberRouter.get('/:id', getBarber);
 

@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import passport from '../passport';
+import passport from './passport';
 
 const router = Router();
 
@@ -9,15 +9,43 @@ router.get('/user', (req, res) => {
   else return res.status(404).json({ user: null });
 });
 
+router.get('/logout', (req, res) => {
+  res.clearCookie('connect.sid');
+  req.logout();
+  return res.json({ message: 'logged out' });
+});
+
+// // https://github.com/thechutrain/mern-passport/blob/master/server/auth/index.js
+// router.post(
+//   '/login',
+//   (req, res, next) => {
+//     console.log(req.body);
+//     next();
+//   },
+//   passport.authenticate('local'),
+//   (req, res) => {
+//     console.log('Logging in...');
+//     console.log(req.user);
+//     return res.json({ user: req.user });
+//   },
+// );
+
 router.get(
   '/google',
-  passport.authenticate('google', { scope: ['profile'] }),
+  passport.authenticate('google', {
+    scope: ['email', 'profile'],
+  }),
 );
 
 router.get(
   '/google/callback',
-  passport.authenticate('google', { failureRedirect: '/login' }),
-  (req, res) => res.redirect('/'),
+  passport.authenticate('google', {
+    failureRedirect: '/auth/login',
+  }),
+  (req: any, res: any) => {
+    // req.session.user = req.user;
+    return res.redirect('/');
+  },
 );
 
 export default router;

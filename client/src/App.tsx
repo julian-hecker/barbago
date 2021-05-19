@@ -40,6 +40,7 @@ const App: React.FC = () => {
   const user = useContext(UserContext);
   return (
     <IonApp>
+      User: {user}
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>

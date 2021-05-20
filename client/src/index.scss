@@ -85,3 +85,16 @@ body {
     --ion-toolbar-color: var(--ion-text-color);
   }
 }
+
+.swiper-slide {
+  flex-direction: column;
+  padding: 0 10px;
+}
+
+.swiper-pagination {
+  width: max-content !important;
+  top: 10px !important;
+  bottom: unset !important;
+  left: 20px !important;
+  text-align: left !important;
+}

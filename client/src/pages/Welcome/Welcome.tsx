@@ -22,13 +22,13 @@ const Welcome: React.FC = () => {
   // https://forum.ionicframework.com/t/get-swiper-instance-from-slides-component/186503/2
   const slides: any = useRef(null);
 
-  const [disablePrev, setDisablePrev] = useState(true);
-  const [disableNext, setDisableNext] = useState(false);
+  // const [disablePrev, setDisablePrev] = useState(true);
+  // const [disableNext, setDisableNext] = useState(false);
 
   const handleSlideChange = async (_e: CustomEvent) => {
     const swiper: Swiper = await slides.current.getSwiper();
-    setDisablePrev(swiper.isBeginning);
-    setDisableNext(swiper.isEnd);
+    // setDisablePrev(swiper.isBeginning);
+    // setDisableNext(swiper.isEnd);
   };
 
   const slidePrev = async (_e: any) => {
@@ -44,9 +44,9 @@ const Welcome: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
-          <IonTitle>The Barbago App</IonTitle>
-          <IonButton slot="end" color="primary">
+        <IonToolbar mode="md">
+          <IonTitle>Barbago | Welcome</IonTitle>
+          <IonButton slot="end" color="primary" href="/auth/google">
             Log In
           </IonButton>
         </IonToolbar>
@@ -55,10 +55,21 @@ const Welcome: React.FC = () => {
         <IonSlides
           ref={slides}
           pager={true}
-          options={{ allowTouchMove: false }}
+          options={{ allowTouchMove: true }}
           onIonSlideDidChange={handleSlideChange}
           style={{ height: '100%' }}
         >
+          <IonSlide>
+            <h1>Welcome to Barbago</h1>
+            <p>
+              Here, the barber comes directly to you! No need to even
+              leave your house.
+            </p>
+            <IonButton slot="end" color="primary" onClick={slideNext}>
+              Next
+            </IonButton>
+          </IonSlide>
+
           <IonSlide>
             <IonList>
               <IonItem>
@@ -66,10 +77,6 @@ const Welcome: React.FC = () => {
                 <IonInput></IonInput>
               </IonItem>
             </IonList>
-          </IonSlide>
-
-          <IonSlide>
-            <h1>If this is your first time here, say heeey-oooh</h1>
           </IonSlide>
 
           <IonSlide>
@@ -83,9 +90,8 @@ const Welcome: React.FC = () => {
           </IonSlide>
         </IonSlides>
       </IonContent>
-      <IonFooter>
+      {/* <IonFooter>
         <IonToolbar>
-          {/* <div style={{ margin: 'auto', maxWidth: 'max-content' }}> */}
           <IonButton
             slot="start"
             color="light"
@@ -102,9 +108,8 @@ const Welcome: React.FC = () => {
           >
             Next
           </IonButton>
-          {/* </div> */}
         </IonToolbar>
-      </IonFooter>
+      </IonFooter> */}
     </IonPage>
   );
 };

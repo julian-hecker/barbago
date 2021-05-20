@@ -5,6 +5,8 @@ body {
     'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin-top: env(safe-area-inset-top);
+  margin-top: constant(safe-area-inset-top);
 }
 
 // https://ionicframework.com/docs/theming/color-generator
@@ -76,7 +78,10 @@ body {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --ion-background-color: #333;
-    --ion-text-color: #fff;
+    --ion-background-color: #333 !important;
+    --ion-text-color: #fff !important;
+    // https://ionicframework.com/docs/theming/themes
+    --ion-toolbar-background: var(--ion-background-color);
+    --ion-toolbar-color: var(--ion-text-color);
   }
 }

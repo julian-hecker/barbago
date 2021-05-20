@@ -1,9 +1,4 @@
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
   IonApp,
   IonTabBar,
@@ -22,7 +17,9 @@ import {
   settings,
 } from 'ionicons/icons';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
+
+import { UserContext } from './context/UserContext';
 
 import Welcome from './pages/Welcome/Welcome';
 import Home from './pages/Home/Home';
@@ -34,10 +31,14 @@ import Settings from './pages/Settings/Settings';
 import Messages from './pages/Messages/Messages';
 // Account? Profile? Edit Profile? Services? Schedule? Map?
 
-import { UserContext } from './context/UserContext';
-
 const App: React.FC = () => {
-  const user = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
+
+  useEffect(() => {
+    setUser('caca');
+    console.log(user);
+  }, [setUser, user]);
+
   return (
     <IonApp>
       <IonReactRouter>

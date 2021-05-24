@@ -1,0 +1,31 @@
+.welcome.page {
+  ion-header {
+    ion-title {
+      padding: 0;
+    }
+    ion-toolbar {
+      padding: 0 16px;
+    }
+  }
+  ion-slides {
+    height: 100%;
+  }
+  ion-card {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 2rem;
+  }
+
+  .swiper-slide {
+    flex-direction: column;
+    padding: 0 16px;
+  }
+
+  .swiper-pagination {
+    width: max-content !important;
+    top: 8px !important;
+    bottom: unset !important;
+    left: 16px !important;
+    text-align: left !important;
+  }
+}

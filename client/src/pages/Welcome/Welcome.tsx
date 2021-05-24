@@ -8,27 +8,26 @@ import {
   IonSlides,
   IonSlide,
   IonButton,
-  IonFooter,
-  IonList,
-  IonItem,
-  IonInput,
-  IonLabel,
+  IonCard,
+  IonCardContent,
+  IonCardTitle,
+  IonCardSubtitle,
+  IonCardHeader,
 } from '@ionic/react';
 
 // Only used for type definitions
 import { Swiper } from 'swiper';
 
+import './Welcome.scss';
+import icon from '../../assets/icon.png';
+
 const Welcome: React.FC = () => {
   // https://forum.ionicframework.com/t/get-swiper-instance-from-slides-component/186503/2
   const slides: any = useRef(null);
 
-  // const [disablePrev, setDisablePrev] = useState(true);
-  // const [disableNext, setDisableNext] = useState(false);
-
   const handleSlideChange = async (_e: CustomEvent) => {
     const swiper: Swiper = await slides.current.getSwiper();
-    // setDisablePrev(swiper.isBeginning);
-    // setDisableNext(swiper.isEnd);
+    console.log(swiper.activeIndex);
   };
 
   const slidePrev = async (_e: any) => {
@@ -42,7 +41,7 @@ const Welcome: React.FC = () => {
   };
 
   return (
-    <IonPage>
+    <IonPage className="welcome page">
       <IonHeader>
         <IonToolbar mode="md">
           <IonTitle>Barbago | Welcome</IonTitle>
@@ -51,42 +50,89 @@ const Welcome: React.FC = () => {
           </IonButton>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen scrollY={true}>
+      <IonContent scrollY={false}>
         <IonSlides
           ref={slides}
           pager={true}
           options={{ allowTouchMove: true }}
           onIonSlideDidChange={handleSlideChange}
-          style={{ height: '100%' }}
         >
           <IonSlide>
-            <h1>Welcome to Barbago</h1>
-            <p>
-              Here, the barber comes directly to you! No need to even
-              leave your house.
-            </p>
-            <IonButton slot="end" color="primary" onClick={slideNext}>
+            <IonCard>
+              <IonCardContent>
+                <IonCardTitle>
+                  <h1>Welcome to Barbago</h1>
+                </IonCardTitle>
+                <p>
+                  Here, the barber comes directly to you! No need to
+                  even leave your house.
+                </p>
+              </IonCardContent>
+            </IonCard>
+            <IonButton color="primary" onClick={slideNext}>
               Next
             </IonButton>
           </IonSlide>
 
           <IonSlide>
-            <IonList>
-              <IonItem>
-                <IonLabel position="floating">Something</IonLabel>
-                <IonInput></IonInput>
-              </IonItem>
-            </IonList>
+            <IonCard>
+              <IonCardContent>
+                <IonCardTitle>How it works</IonCardTitle>
+                <IonCardSubtitle>In a few words</IonCardSubtitle>
+                <div style={{ textAlign: 'left' }}>
+                  <p>
+                    1. Search, filter, and sort barbers near you to
+                    find the best one for you.
+                  </p>
+                  <p>
+                    2. Select which services you would like to
+                    purchase and the date of your appointment
+                  </p>
+                  <p>
+                    3. Pay through the app and enjoy your grooming
+                    where it's most convenient!
+                  </p>
+                </div>
+              </IonCardContent>
+            </IonCard>
+            <div>
+              <IonButton color="light" onClick={slidePrev}>
+                Back
+              </IonButton>
+              <IonButton color="primary" onClick={slideNext}>
+                Next
+              </IonButton>
+            </div>
           </IonSlide>
 
           <IonSlide>
-            <h1>It is your first time here right? Nice!</h1>
-          </IonSlide>
-
-          <IonSlide>
-            <IonButton href="/auth/google" size="large">
-              Sign up with Google
-            </IonButton>
+            <IonCard>
+              <IonCardHeader>
+                <img src={icon} style={{ maxWidth: '150px' }} />
+              </IonCardHeader>
+              <IonCardContent>
+                <IonCardTitle>Join Barbago!</IonCardTitle>
+                <IonCardSubtitle>
+                  Create an account or login
+                </IonCardSubtitle>
+                <div>
+                  <IonButton href="/login" color="light">
+                    Log in
+                  </IonButton>
+                  <IonButton href="/signup" color="primary">
+                    Sign up
+                  </IonButton>
+                </div>
+              </IonCardContent>
+            </IonCard>
+            <div>
+              <IonButton color="light" onClick={slidePrev}>
+                Back
+              </IonButton>
+              <IonButton href="/home" color="light">
+                Skip for now
+              </IonButton>
+            </div>
           </IonSlide>
         </IonSlides>
       </IonContent>

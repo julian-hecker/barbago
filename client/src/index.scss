@@ -107,21 +107,8 @@ body {
     --ion-toolbar-background: var(--ion-background-color);
     --ion-toolbar-color: var(--ion-text-color);
 
-    --ion-card-background: #444;
-    --ion-item-background: #444;
+    --ion-card-background: var(--ion-background-color);
+    --ion-item-background: var(--ion-background-color);
     --ion-item-color: #fff;
   }
-}
-
-.swiper-slide {
-  flex-direction: column;
-  padding: 0 10px;
-}
-
-.swiper-pagination {
-  width: max-content !important;
-  top: 10px !important;
-  bottom: unset !important;
-  left: 20px !important;
-  text-align: left !important;
 }

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import {
   IonPage,
   IonHeader,
@@ -108,7 +108,11 @@ const Welcome: React.FC = () => {
           <IonSlide>
             <IonCard>
               <IonCardHeader>
-                <img src={icon} style={{ maxWidth: '150px' }} />
+                <img
+                  src={icon}
+                  style={{ maxWidth: '150px' }}
+                  alt="Barbago Logo"
+                />
               </IonCardHeader>
               <IonCardContent>
                 <IonCardTitle>Join Barbago!</IonCardTitle>

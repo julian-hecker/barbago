@@ -57,24 +57,24 @@ const App: React.FC = () => {
             </Switch>
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
-            <IonTabButton tab="welcome" href="/welcome">
+            {/* <IonTabButton tab="welcome" href="/welcome">
               <IonLabel>Welcome</IonLabel>
-            </IonTabButton>
+            </IonTabButton> */}
             <IonTabButton tab="home" href="/home">
               <IonIcon icon={home} />
               <IonLabel>Home</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="favorites" href="/favorites">
+              <IonIcon icon={heart} />
+              <IonLabel>Faves</IonLabel>
             </IonTabButton>
             <IonTabButton tab="search" href="/search">
               <IonIcon icon={search} />
               <IonLabel>Search</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="favorites" href="/favorites">
-              <IonIcon icon={heart} />
-              <IonLabel>Favorites</IonLabel>
-            </IonTabButton>
             <IonTabButton tab="messages" href="/messages">
               <IonIcon icon={chatbubbles} />
-              <IonLabel>Messages</IonLabel>
+              <IonLabel>Chat</IonLabel>
             </IonTabButton>
             <IonTabButton tab="settings" href="/settings">
               <IonIcon icon={settings} />

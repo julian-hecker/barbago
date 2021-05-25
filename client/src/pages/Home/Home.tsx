@@ -9,8 +9,6 @@ import {
   IonList,
 } from '@ionic/react';
 
-// import style from './Home.module.scss';
-
 const Home: React.FC = () => {
   return (
     <IonPage>
@@ -35,6 +33,8 @@ const Home: React.FC = () => {
  * - Popular in your area
  * - If messages: view your messages
  * - If previous purchase: review your barber
+ * - a month after last hair cut: Ready for a new cut? go with your favorites!
+ * - Take a look at some popular styles! (stretch goal)
  * - Are you a barber? Click here to get started! (dismissable)
  */
 

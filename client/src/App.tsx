@@ -11,7 +11,7 @@ import {
 import { IonReactRouter } from '@ionic/react-router';
 import {
   chatbubbles,
-  heart,
+  // heart,
   home,
   search,
   settings,
@@ -29,6 +29,7 @@ import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import Settings from './pages/Settings/Settings';
 import Messages from './pages/Messages/Messages';
+import Test from './pages/Settings/Test';
 // Account? Profile? Edit Profile? Services? Schedule? Map?
 
 const App: React.FC = () => {
@@ -45,15 +46,17 @@ const App: React.FC = () => {
         <IonTabs>
           <IonRouterOutlet>
             <Switch>
-              <Route exact path="/welcome" component={Welcome} />
-              <Route exact path="/home" component={Home} />
-              <Route exact path="/search" component={Search} />
-              <Route exact path="/favorites" component={Favorites} />
-              <Route exact path="/messages" component={Messages} />
-              <Route exact path="/settings" component={Settings} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/signup" component={Signup} />
-              <Redirect path="/" to="/home" />
+              <Redirect exact path="/" to="/home" />
+              <Route path="/welcome" component={Welcome} />
+              <Route path="/home" component={Home} />
+              <Route path="/search" component={Search} />
+              <Route path="/favorites" component={Favorites} />
+              <Route path="/messages" component={Messages} />
+              <Route path="/settings" component={Settings} />
+              <Route path="/login" component={Login} />
+              <Route path="/signup" component={Signup} />
+
+              <Route path="/test" component={Test} />
             </Switch>
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
@@ -64,10 +67,10 @@ const App: React.FC = () => {
               <IonIcon icon={home} />
               <IonLabel>Home</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="favorites" href="/favorites">
+            {/* <IonTabButton tab="favorites" href="/favorites">
               <IonIcon icon={heart} />
               <IonLabel>Faves</IonLabel>
-            </IonTabButton>
+            </IonTabButton> */}
             <IonTabButton tab="search" href="/search">
               <IonIcon icon={search} />
               <IonLabel>Search</IonLabel>

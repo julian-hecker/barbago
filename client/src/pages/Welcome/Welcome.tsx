@@ -140,28 +140,13 @@ const Welcome: React.FC = () => {
           </IonSlide>
         </IonSlides>
       </IonContent>
-      {/* <IonFooter>
-        <IonToolbar>
-          <IonButton
-            slot="start"
-            color="light"
-            disabled={disablePrev}
-            onClick={slidePrev}
-          >
-            Previous
-          </IonButton>
-          <IonButton
-            slot="end"
-            color="primary"
-            disabled={disableNext}
-            onClick={slideNext}
-          >
-            Next
-          </IonButton>
-        </IonToolbar>
-      </IonFooter> */}
     </IonPage>
   );
 };
+
+/**
+ * To do:
+ * Hide tabbar on welcome page
+ */
 
 export default Welcome;

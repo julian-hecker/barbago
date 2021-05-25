@@ -27,14 +27,12 @@ const Settings: React.FC<any> = () => {
         <IonList mode="ios">
           {settingsOptions.map(({ name, options }, ci) => {
             return (
-              <>
-                <IonItemDivider key={`category-${ci}`}>
-                  {name}
-                </IonItemDivider>
+              <div key={`category-${ci}`}>
+                <IonItemDivider>{name}</IonItemDivider>
                 {options &&
                   options.map((option: any, oi: number) => {
                     const type = option.type;
-                    const detail = option.type === 'details';
+                    const detail = type === 'details';
                     return (
                       <IonItem
                         detail={detail}
@@ -45,7 +43,7 @@ const Settings: React.FC<any> = () => {
                       </IonItem>
                     );
                   })}
-              </>
+              </div>
             );
           })}
           <IonItemDivider>Account</IonItemDivider>

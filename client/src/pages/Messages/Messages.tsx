@@ -55,14 +55,17 @@ const Messages: React.FC = () => {
         <IonNav></IonNav>
         <IonList>
           {conversations.map(
-            ({ name, lastMessage, lastMessageDate, convoAvatar }) => {
+            (
+              { name, lastMessage, lastMessageDate, convoAvatar },
+              index,
+            ) => {
               const datediff =
                 (
                   (new Date().getTime() - lastMessageDate.getTime()) /
                   3600000
                 ).toFixed(1) + ' hours ago';
               return (
-                <IonItem>
+                <IonItem key={`message-${index}`}>
                   <IonAvatar style={{ minWidth: '40px' }}>
                     <IonImg src={convoAvatar} alt={name} />
                   </IonAvatar>

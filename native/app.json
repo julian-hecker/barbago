@@ -1,0 +1,12 @@
+{
+  "name": "barbago",
+  "displayName": "Barbago",
+  "expo": {
+    "name": "Barbago",
+    "slug": "barbago",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

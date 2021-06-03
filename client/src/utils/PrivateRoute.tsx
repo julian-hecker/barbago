@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, RouteProps } from 'react-router-dom';
 
 import { UserContext } from '../context/UserContext';
 
-const PrivateRoute: React.FC<any> = ({
+const PrivateRoute: React.FC<IPrivateRouteProps> = ({
   component: Component,
+  redirect,
   ...rest
 }) => {
   const { user } = useContext(UserContext);
@@ -13,11 +14,20 @@ const PrivateRoute: React.FC<any> = ({
       {...rest}
       render={(props) => {
         if (user?.user) return <Component {...rest} {...props} />;
-        else return <Redirect to="/login" />;
+        else return <Redirect to={redirect!} />;
       }}
     />
   );
 };
+
+PrivateRoute.defaultProps = {
+  redirect: '/login',
+};
+
+interface IPrivateRouteProps extends RouteProps {
+  redirect?: string;
+  component: React.FC;
+}
 
 export default PrivateRoute;
 

@@ -9,12 +9,7 @@ import {
   IonLabel,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import {
-  chatbubbles,
-  home,
-  search,
-  settings,
-} from 'ionicons/icons';
+import { chatbubbles, home, search, settings } from 'ionicons/icons';
 import { Switch, Route, Redirect } from 'react-router-dom';
 // import axios from 'axios';
 
@@ -49,7 +44,6 @@ const App: React.FC = () => {
               <Route path="/welcome" component={Welcome} />
               <Route path="/home" component={Home} />
               <Route path="/search" component={Search} />
-              {/* <Route path="/favorites" component={Favorites} /> */}
               <PrivateRoute path="/messages" component={Messages} />
               <Route path="/settings" component={Settings} />
               <Route path="/login" component={Login} />

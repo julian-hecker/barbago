@@ -11,7 +11,6 @@ import {
 import { IonReactRouter } from '@ionic/react-router';
 import {
   chatbubbles,
-  // heart,
   home,
   search,
   settings,
@@ -20,11 +19,11 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 // import axios from 'axios';
 
 import { UserContext } from './context/UserContext';
+import PrivateRoute from './utils/PrivateRoute';
 
 import Welcome from './pages/Welcome/Welcome';
 import Home from './pages/Home/Home';
 import Search from './pages/Search/Search';
-import Favorites from './pages/Favorites/Favorites';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import Settings from './pages/Settings/Settings';
@@ -36,9 +35,9 @@ const App: React.FC = () => {
   const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
-    setUser('caca');
+    // setUser({ user: 'caca' });
     console.log(user);
-  }, [setUser, user]);
+  }, []);
 
   return (
     <IonApp>
@@ -50,8 +49,8 @@ const App: React.FC = () => {
               <Route path="/welcome" component={Welcome} />
               <Route path="/home" component={Home} />
               <Route path="/search" component={Search} />
-              <Route path="/favorites" component={Favorites} />
-              <Route path="/messages" component={Messages} />
+              {/* <Route path="/favorites" component={Favorites} /> */}
+              <PrivateRoute path="/messages" component={Messages} />
               <Route path="/settings" component={Settings} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
@@ -67,10 +66,6 @@ const App: React.FC = () => {
               <IonIcon icon={home} />
               <IonLabel>Home</IonLabel>
             </IonTabButton>
-            {/* <IonTabButton tab="favorites" href="/favorites">
-              <IonIcon icon={heart} />
-              <IonLabel>Faves</IonLabel>
-            </IonTabButton> */}
             <IonTabButton tab="search" href="/search">
               <IonIcon icon={search} />
               <IonLabel>Search</IonLabel>

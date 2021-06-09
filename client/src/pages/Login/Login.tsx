@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
 
 const Login: React.FC = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
 
   return (
     <div>

@@ -26,11 +26,11 @@ import Messages from './pages/Messages/Messages';
 // Account? Profile? Edit Profile? Services? Schedule? Map?
 
 const App: React.FC = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     console.log(user);
-  }, []);
+  }, [user]);
 
   return (
     <IonApp>

@@ -23,14 +23,12 @@ import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import Settings from './pages/Settings/Settings';
 import Messages from './pages/Messages/Messages';
-import Test from './pages/Settings/Test';
 // Account? Profile? Edit Profile? Services? Schedule? Map?
 
 const App: React.FC = () => {
   const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
-    // setUser({ user: 'caca' });
     console.log(user);
   }, []);
 
@@ -40,22 +38,22 @@ const App: React.FC = () => {
         <IonTabs>
           <IonRouterOutlet>
             <Switch>
-              <Redirect exact path="/" to="/home" />
+              <Redirect exact path="/" to="/welcome" />
+
+              <Route path="/:tab(home)" component={Home} />
+              <Route path="/:tab(search)" component={Search} />
+              <PrivateRoute
+                path="/:tab(messages)"
+                component={Messages}
+              />
+              <Route path="/:tab(settings)" component={Settings} />
+
               <Route path="/welcome" component={Welcome} />
-              <Route path="/home" component={Home} />
-              <Route path="/search" component={Search} />
-              <PrivateRoute path="/messages" component={Messages} />
-              <Route path="/settings" component={Settings} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
-
-              <Route path="/test" component={Test} />
             </Switch>
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
-            {/* <IonTabButton tab="welcome" href="/welcome">
-              <IonLabel>Welcome</IonLabel>
-            </IonTabButton> */}
             <IonTabButton tab="home" href="/home">
               <IonIcon icon={home} />
               <IonLabel>Home</IonLabel>

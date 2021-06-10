@@ -120,10 +120,10 @@ const Welcome: React.FC = () => {
                   Create an account or login
                 </IonCardSubtitle>
                 <div>
-                  <IonButton href="/login" color="light">
+                  <IonButton routerLink="/login" color="light">
                     Log in
                   </IonButton>
-                  <IonButton href="/signup" color="primary">
+                  <IonButton routerLink="/signup" color="primary">
                     Sign up
                   </IonButton>
                 </div>
@@ -133,7 +133,7 @@ const Welcome: React.FC = () => {
               <IonButton color="light" onClick={slidePrev}>
                 Back
               </IonButton>
-              <IonButton href="/home" color="light">
+              <IonButton routerLink="/home" color="light">
                 Skip for now
               </IonButton>
             </div>

@@ -13,8 +13,8 @@ import { chatbubbles, home, search, settings } from 'ionicons/icons';
 import { Switch, Route, Redirect } from 'react-router-dom';
 // import axios from 'axios';
 
+import PrivateRoute from './components/PrivateRoute';
 import { UserContext } from './context/UserContext';
-import PrivateRoute from './utils/PrivateRoute';
 
 import Welcome from './pages/Welcome/Welcome';
 import Home from './pages/Home/Home';
@@ -78,3 +78,6 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+
+// Extract Routes into an object

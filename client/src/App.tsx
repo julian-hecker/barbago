@@ -97,23 +97,14 @@ const App: React.FC = () => {
           <IonRouterOutlet>
             <Switch>
               <Redirect exact path="/" to="/welcome" />
-              {routes.map(
-                ({ path, component, condition, redirect }) => {
-                  return (
-                    <ConditionalRoute
-                      path={path}
-                      component={component}
-                      condition={condition}
-                      redirect={redirect}
-                    />
-                  );
-                },
-              )}
+              {routes.map((props, key) => (
+                <ConditionalRoute key={key} {...props} />
+              ))}
             </Switch>
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
-            {tabs.map(({ text, path, icon }) => (
-              <IonTabButton tab={text} href={path}>
+            {tabs.map(({ text, path, icon }, key) => (
+              <IonTabButton tab={text} href={path} key={key}>
                 <IonIcon icon={icon} />
                 <IonLabel>{text}</IonLabel>
               </IonTabButton>

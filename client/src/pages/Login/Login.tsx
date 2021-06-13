@@ -35,7 +35,13 @@ const Login: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonCard>
+        <IonCard
+          style={{
+            maxWidth: '500px',
+            marginRight: 'auto',
+            marginLeft: 'auto',
+          }}
+        >
           <IonCardHeader>
             <IonImg
               src={icon}

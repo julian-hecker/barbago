@@ -26,7 +26,6 @@ import {
   person,
 } from 'ionicons/icons';
 
-
 // Problem: Can't test on Mobile; should open a new tab
 const Signup: React.FC = () => {
   return (
@@ -37,7 +36,13 @@ const Signup: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonCard>
+        <IonCard
+          style={{
+            maxWidth: '500px',
+            marginRight: 'auto',
+            marginLeft: 'auto',
+          }}
+        >
           <IonCardHeader>
             <IonCardTitle>Welcome to Barbago!</IonCardTitle>
             <IonCardSubtitle>

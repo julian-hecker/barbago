@@ -10,5 +10,13 @@
       "showSpinner": true
     }
   },
+  "GoogleAuth": {
+    "scopes": [
+      "profile",
+      "email"
+    ],
+    "serverClientId": "864038050819-lchuefr9dopkpj2itl61tqh4sv6e4olf.apps.googleusercontent.com",
+    "forceCodeForRefreshToken": true
+  },
   "cordova": {}
 }

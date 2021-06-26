@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "864038050819",
+    "project_id": "barbago-c913f",
+    "storage_bucket": "barbago-c913f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864038050819:android:a2232e249e146175a10236",
+        "android_client_info": {
+          "package_name": "com.barbago.client"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "864038050819-2c4etf46qegdra57j5gh5bq5iusued96.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.barbago.client",
+            "certificate_hash": "e4f7422f80188b79eba44536611caa84dc00e911"
+          }
+        },
+        {
+          "client_id": "864038050819-lchuefr9dopkpj2itl61tqh4sv6e4olf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyUKYI19FviFTT9zhidnYC30WLRlDnhWU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "864038050819-lchuefr9dopkpj2itl61tqh4sv6e4olf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

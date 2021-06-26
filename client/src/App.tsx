@@ -27,11 +27,24 @@ import Messages from './pages/Messages/Messages';
 // To do: Add application-level notification area
 // Decide on using firebase or node-express for backend
 
+import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+GoogleAuth.init();
+
 const App: React.FC = () => {
   const { user } = useContext(UserContext);
 
+  const googleSignup = async () => {
+    try {
+      const googleUser = await GoogleAuth.signIn();
+      console.log(googleUser);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
     console.log(user);
+    googleSignup();
   }, [user]);
 
   const routes = [
@@ -109,6 +122,9 @@ const App: React.FC = () => {
                 <IonLabel>{text}</IonLabel>
               </IonTabButton>
             ))}
+            <IonTabButton tab="log" onClick={googleSignup}>
+              Aaa
+            </IonTabButton>
           </IonTabBar>
         </IonTabs>
       </IonReactRouter>

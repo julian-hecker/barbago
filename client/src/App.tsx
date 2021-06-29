@@ -28,15 +28,17 @@ import Messages from './pages/Messages/Messages';
 // Decide on using firebase or node-express for backend
 
 import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
-GoogleAuth.init();
+// GoogleAuth.init();
+GoogleAuth.signIn();
 
 const App: React.FC = () => {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   const googleSignup = async () => {
     try {
       const googleUser = await GoogleAuth.signIn();
       console.log(googleUser);
+      return googleUser;
     } catch (err) {
       console.error(err);
     }
@@ -44,8 +46,8 @@ const App: React.FC = () => {
 
   useEffect(() => {
     console.log(user);
-    googleSignup();
-  }, [user]);
+    setUser(googleSignup());
+  }, []);
 
   const routes = [
     {
@@ -122,9 +124,6 @@ const App: React.FC = () => {
                 <IonLabel>{text}</IonLabel>
               </IonTabButton>
             ))}
-            <IonTabButton tab="log" onClick={googleSignup}>
-              Aaa
-            </IonTabButton>
           </IonTabBar>
         </IonTabs>
       </IonReactRouter>

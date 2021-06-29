@@ -13,11 +13,25 @@
       name="description"
       content="Get a haircut in the comfort of your own home!"
     />
+    <meta
+      name="google-signin-client_id"
+      content="864038050819-lchuefr9dopkpj2itl61tqh4sv6e4olf.apps.googleusercontent.com"
+    />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>Barbago | The Barber Comes to You!</title>
+    <script src="https://apis.google.com/js/platform.js?onload=onLoad"></script>
   </head>
   <body>
+    <script>
+      gapi.load('client:auth2', function () {
+        gapi.auth2.init({
+          client_id:
+            '864038050819-lchuefr9dopkpj2itl61tqh4sv6e4olf.apps.googleusercontent.com',
+        });
+      });
+    </script>
+
     <noscript
       >You need to enable JavaScript to run this app.</noscript
     >

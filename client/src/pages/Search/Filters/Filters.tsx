@@ -21,7 +21,7 @@ const Filters: React.FC<IFilterProps> = ({
       <IonToolbar>
         <IonTitle>Filter and Sort</IonTitle>
       </IonToolbar>
-      <div>
+      <div className="ion-padding">
         <h1>hi</h1>
         <h2>its time</h2>
         <h3>for your haircut</h3>

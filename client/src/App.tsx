@@ -9,36 +9,101 @@ import {
   IonLabel,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import {
-  chatbubbles,
-  // heart,
-  home,
-  search,
-  settings,
-} from 'ionicons/icons';
-import { Switch, Route, Redirect } from 'react-router-dom';
-// import axios from 'axios';
+import { chatbubbles, home, search, settings } from 'ionicons/icons';
+import { Switch, Redirect } from 'react-router-dom';
 
+import ConditionalRoute from './components/ConditionalRoute';
 import { UserContext } from './context/UserContext';
 
 import Welcome from './pages/Welcome/Welcome';
 import Home from './pages/Home/Home';
 import Search from './pages/Search/Search';
-import Favorites from './pages/Favorites/Favorites';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import Settings from './pages/Settings/Settings';
 import Messages from './pages/Messages/Messages';
-import Test from './pages/Settings/Test';
-// Account? Profile? Edit Profile? Services? Schedule? Map?
+// Account? Profile? Edit Profile? Services? Schedule?
+
+// To do: Add application-level notification area
+// Decide on using firebase or node-express for backend
+
+import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+// GoogleAuth.init();
+GoogleAuth.signIn();
 
 const App: React.FC = () => {
   const { user, setUser } = useContext(UserContext);
 
+  const googleSignup = async () => {
+    try {
+      const googleUser = await GoogleAuth.signIn();
+      console.log(googleUser);
+      return googleUser;
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
-    setUser('caca');
     console.log(user);
-  }, [setUser, user]);
+    setUser(googleSignup());
+  }, []);
+
+  const routes = [
+    {
+      path: '/:tab(home)',
+      component: Home,
+    },
+    {
+      path: '/:tab(search)',
+      component: Search,
+    },
+    {
+      path: '/:tab(messages)',
+      component: Messages,
+      condition: user.user,
+      redirect: '/signup',
+    },
+    {
+      path: '/:tab(settings)',
+      component: Settings,
+    },
+    {
+      path: '/welcome',
+      component: Welcome,
+    },
+    {
+      path: '/login',
+      component: Login,
+    },
+    {
+      path: '/signup',
+      component: Signup,
+    },
+  ];
+
+  const tabs = [
+    {
+      text: 'Home',
+      path: '/home',
+      icon: home,
+    },
+    {
+      text: 'Search',
+      path: '/search',
+      icon: search,
+    },
+    {
+      text: 'Messages',
+      path: '/messages',
+      icon: chatbubbles,
+    },
+    {
+      text: 'Settings',
+      path: '/settings',
+      icon: settings,
+    },
+  ];
 
   return (
     <IonApp>
@@ -46,43 +111,19 @@ const App: React.FC = () => {
         <IonTabs>
           <IonRouterOutlet>
             <Switch>
-              <Redirect exact path="/" to="/home" />
-              <Route path="/welcome" component={Welcome} />
-              <Route path="/home" component={Home} />
-              <Route path="/search" component={Search} />
-              <Route path="/favorites" component={Favorites} />
-              <Route path="/messages" component={Messages} />
-              <Route path="/settings" component={Settings} />
-              <Route path="/login" component={Login} />
-              <Route path="/signup" component={Signup} />
-
-              <Route path="/test" component={Test} />
+              <Redirect exact path="/" to="/welcome" />
+              {routes.map((props, key) => (
+                <ConditionalRoute key={key} {...props} />
+              ))}
             </Switch>
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
-            {/* <IonTabButton tab="welcome" href="/welcome">
-              <IonLabel>Welcome</IonLabel>
-            </IonTabButton> */}
-            <IonTabButton tab="home" href="/home">
-              <IonIcon icon={home} />
-              <IonLabel>Home</IonLabel>
-            </IonTabButton>
-            {/* <IonTabButton tab="favorites" href="/favorites">
-              <IonIcon icon={heart} />
-              <IonLabel>Faves</IonLabel>
-            </IonTabButton> */}
-            <IonTabButton tab="search" href="/search">
-              <IonIcon icon={search} />
-              <IonLabel>Search</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="messages" href="/messages">
-              <IonIcon icon={chatbubbles} />
-              <IonLabel>Chat</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="settings" href="/settings">
-              <IonIcon icon={settings} />
-              <IonLabel>Settings</IonLabel>
-            </IonTabButton>
+            {tabs.map(({ text, path, icon }, key) => (
+              <IonTabButton tab={text} href={path} key={key}>
+                <IonIcon icon={icon} />
+                <IonLabel>{text}</IonLabel>
+              </IonTabButton>
+            ))}
           </IonTabBar>
         </IonTabs>
       </IonReactRouter>

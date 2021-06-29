@@ -4,4 +4,5 @@
     <string name="title_activity_main">barbago-client</string>
     <string name="package_name">com.barbago.client</string>
     <string name="custom_url_scheme">com.barbago.client</string>
+    <string name="server_client_id">864038050819-lchuefr9dopkpj2itl61tqh4sv6e4olf.apps.googleusercontent.com</string>
 </resources>

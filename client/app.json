@@ -2,6 +2,7 @@
   "expo": {
     "name": "Barbago App",
     "slug": "barbago-app",
+    "scheme": "barbago",
     "version": "1.0.0",
     "entryPoint": "src/App.tsx",
     "orientation": "portrait",
@@ -27,6 +28,11 @@
       }
     },
     "web": {
+      "build": {
+        "babel": {
+          "include": ["react-router-native"]
+        }
+      },
       "favicon": "./assets/favicon.png"
     }
   }

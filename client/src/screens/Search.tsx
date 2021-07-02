@@ -1,38 +1,39 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 
-const Tab = createMaterialTopTabNavigator();
+import { Screen, Text } from '../components';
+import { Map } from './';
+
+const TopTab = createMaterialTopTabNavigator();
 
 const Results = () => (
-  <View style={styles.container}>
+  <Screen>
     <Text>Results</Text>
-  </View>
-);
-const Map = () => (
-  <View style={styles.container}>
-    <Text>Map</Text>
-  </View>
+  </Screen>
 );
 
 const Search: React.FC = () => {
   return (
-    <Tab.Navigator tabBarOptions={{
-      
-    }}>
-      <Tab.Screen name="Results" component={Results} />
-      <Tab.Screen name="Map" component={Map} />
-    </Tab.Navigator>
+    <TopTab.Navigator>
+      <TopTab.Screen name="Results" component={Results} />
+      <TopTab.Screen name="Map" component={Map} />
+    </TopTab.Navigator>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Stack = createStackNavigator();
 
-export default Search;
+const SearchStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Search"
+        component={Search}
+        options={{ title: 'Barber Search' }}
+      />
+    </Stack.Navigator>
+  );
+};
+
+export default SearchStack;

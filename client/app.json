@@ -16,7 +16,9 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -29,7 +31,10 @@
     "web": {
       "build": {
         "babel": {
-          "include": ["react-router-native", "react-leaflet"]
+          "include": [
+            "react-router-native",
+            "react-leaflet"
+          ]
         }
       },
       "favicon": "./assets/favicon.png"

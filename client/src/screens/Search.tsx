@@ -3,7 +3,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { Screen, Text } from '../components';
-import { Map } from './';
+import Map from './Map';
 
 const TopTab = createMaterialTopTabNavigator();
 

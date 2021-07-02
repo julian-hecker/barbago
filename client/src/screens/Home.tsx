@@ -1,11 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { useNavigation, useTheme } from '@react-navigation/native';
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 
-const Home = () => {
+import { MainTabParams } from '../screens';
+import { Screen, Text } from '../components';
+
+type HomeProps = BottomTabNavigationProp<MainTabParams, 'Home'>;
+
+const Home: React.FC<HomeProps> = () => {
+  const navigation = useNavigation<HomeProps>();
+  const { colors } = useTheme();
+  const { text } = colors;
+
   return (
-    <View style={styles.container}>
-      <Text>Home</Text>
-    </View>
+    <Screen>
+      <Text style={{}}>Home</Text>
+    </Screen>
   );
 };
 

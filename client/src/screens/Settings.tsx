@@ -5,7 +5,7 @@ import { useTheme, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { Screen, Text } from '../components';
-import { MainTabScreenNavProp } from './Navigation';
+import { MainTabScreenNavProp } from '../utils/navigation';
 import { ScrollView } from 'react-native';
 
 const Stack = createStackNavigator();

@@ -7,10 +7,10 @@ export const CustomLightTheme = {
   colors: {
     // ...DefaultTheme.colors,
     primary: '#ff0000',
-    background: '#dddddd',
-    card: '#ddd',
-    text: '#000',
-    border: '#000',
+    background: '#eee',
+    card: '#fff',
+    text: '#222',
+    border: '#ccc',
     notification: '#ff0000',
   },
 };

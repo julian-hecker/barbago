@@ -4,7 +4,7 @@ import { useNavigation, useTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { Screen, Text } from '../components';
-import { MainTabScreenNavProp } from './Navigation';
+import { MainTabScreenNavProp } from '../utils/navigation';
 
 const HomeStack = createStackNavigator();
 

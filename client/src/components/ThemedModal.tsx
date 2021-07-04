@@ -12,9 +12,10 @@ const ThemedModal = forwardRef<Modalize, ModalizeProps>(
         ref={ref}
         handlePosition="inside"
         modalTopOffset={200}
+        disableScrollIfPossible={true}
         alwaysOpen={75}
         modalStyle={{ backgroundColor: colors.card, padding: 16 }}
-        handleStyle={{ backgroundColor: colors.text }}
+        handleStyle={{ backgroundColor: colors.border }}
         {...rest}
       >
         {children}

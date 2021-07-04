@@ -24,7 +24,7 @@ import {
 import {
   MainTabParams,
   RootStackScreenProps,
-} from './screens/Navigation';
+} from './utils/navigation';
 import { LightTheme, DarkTheme } from './utils';
 
 const RootStack = createStackNavigator();

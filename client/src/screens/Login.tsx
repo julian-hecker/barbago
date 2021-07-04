@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { Screen, Text } from '../components';
-import { RootStackScreenProps } from './Navigation';
+import { RootStackScreenProps } from '../utils/navigation';
 
 const Login = ({ navigation, route }: RootStackScreenProps) => {
   return (

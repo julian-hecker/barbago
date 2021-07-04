@@ -93,6 +93,7 @@ const Settings = () => {
                 bottomDivider
                 containerStyle={{
                   backgroundColor: colors.card,
+                  borderColor: colors.border,
                 }}
                 onPress={() => alert('reee')}
                 key={index}

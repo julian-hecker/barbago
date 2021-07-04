@@ -40,7 +40,7 @@ const App = () => {
         ref={navRef}
         theme={scheme === 'dark' ? DarkTheme : LightTheme}
       >
-        <RootStack.Navigator mode="modal" headerMode="screen">
+        <RootStack.Navigator mode="modal" headerMode="float">
           <RootStack.Screen
             name="Main"
             options={{ headerShown: false }}

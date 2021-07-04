@@ -1,25 +1,26 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Modalize, ModalizeProps } from 'react-native-modalize';
 import { useTheme } from '@react-navigation/native';
 
-const ThemedModal: React.FC<ModalProps> = ({ children, ...rest }) => {
-  const { colors } = useTheme();
-  return (
-    <Modalize
-      handlePosition="inside"
-      modalTopOffset={200}
-      alwaysOpen={75}
-      modalStyle={{ backgroundColor: colors.card, padding: 16 }}
-      handleStyle={{ backgroundColor: colors.text }}
-      {...rest}
-    >
-      {children}
-    </Modalize>
-  );
-};
-
-interface ModalProps extends ModalizeProps {
-  ref: React.Ref<Modalize>;
-}
+// https://www.carlrippon.com/react-forwardref-typescript/
+// https://reactjs.org/docs/forwarding-refs.html
+const ThemedModal = forwardRef<Modalize, ModalizeProps>(
+  ({ children, ...rest }, ref) => {
+    const { colors } = useTheme();
+    return (
+      <Modalize
+        ref={ref}
+        handlePosition="inside"
+        modalTopOffset={200}
+        alwaysOpen={75}
+        modalStyle={{ backgroundColor: colors.card, padding: 16 }}
+        handleStyle={{ backgroundColor: colors.text }}
+        {...rest}
+      >
+        {children}
+      </Modalize>
+    );
+  },
+);
 
 export default ThemedModal;

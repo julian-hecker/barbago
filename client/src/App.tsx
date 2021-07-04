@@ -1,8 +1,11 @@
-import React, { Context } from 'react';
+import React, { useRef } from 'react';
 import { useColorScheme } from 'react-native-appearance';
-import { NavigationContainer } from '@react-navigation/native';
+import {
+  NavigationContainer,
+  NavigationContainerRef,
+} from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { registerRootComponent } from 'expo';
 import { StatusBar } from 'expo-status-bar';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -13,59 +16,91 @@ import {
   About,
   Search,
   Settings,
-  MainTabParams,
+  Messages,
+  Login,
+  Signup,
+  Welcome,
 } from './screens';
+import {
+  MainTabParams,
+  RootStackScreenProps,
+} from './screens/Navigation';
 import { LightTheme, DarkTheme } from './utils';
 
-const Tab = createMaterialBottomTabNavigator<MainTabParams>();
+const RootStack = createStackNavigator();
 
 const App = () => {
+  const navRef = useRef<NavigationContainerRef>(null);
   const scheme = useColorScheme();
 
   return (
     <ContextProvider>
+      <StatusBar style="auto" />
       <NavigationContainer
+        ref={navRef}
         theme={scheme === 'dark' ? DarkTheme : LightTheme}
       >
-        <StatusBar style="auto" />
-        <Tab.Navigator
-          // Set icons for each tab
-          screenOptions={({ route }) => ({
-            tabBarIcon: ({ focused, color }) => {
-              let iconName;
-              switch (route.name) {
-                case 'Home':
-                  iconName = 'home';
-                  break;
-                case 'About':
-                  iconName = 'information';
-                  break;
-                case 'Search':
-                  iconName = 'magnify';
-                  break;
-                case 'Settings':
-                  iconName = 'cog';
-                  break;
-                default:
-                  return null;
-              }
-              return (
-                <MaterialCommunityIcons
-                  name={iconName as any}
-                  size={24}
-                  color={color}
-                />
-              );
-            },
-          })}
-        >
-          <Tab.Screen name="Home" component={Home} />
-          <Tab.Screen name="About" component={About} />
-          <Tab.Screen name="Search" component={Search} />
-          <Tab.Screen name="Settings" component={Settings} />
-        </Tab.Navigator>
+        <RootStack.Navigator mode="modal" headerMode="screen">
+          <RootStack.Screen
+            name="Main"
+            options={{ headerShown: false }}
+            component={MainTabScreen}
+          />
+          <RootStack.Screen name="Login" component={Login} />
+          <RootStack.Screen name="Signup" component={Signup} />
+          <RootStack.Screen name="Welcome" component={Welcome} />
+        </RootStack.Navigator>
       </NavigationContainer>
     </ContextProvider>
+  );
+};
+
+const MainTabs = createBottomTabNavigator<MainTabParams>();
+
+const MainTabScreen = ({
+  navigation,
+  route,
+}: RootStackScreenProps) => {
+  return (
+    <MainTabs.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ color, focused, size }) => {
+          let iconName;
+          switch (route.name) {
+            case 'Home':
+              iconName = 'home';
+              break;
+            case 'About':
+              iconName = 'information';
+              break;
+            case 'Messages':
+              iconName = 'chat';
+              break;
+            case 'Search':
+              iconName = 'magnify';
+              break;
+            case 'Settings':
+              iconName = 'cog';
+              break;
+            default:
+              return null;
+          }
+          return (
+            <MaterialCommunityIcons
+              name={iconName as any}
+              size={24}
+              color={color}
+            />
+          );
+        },
+      })}
+    >
+      <MainTabs.Screen name="Home" component={Home} />
+      <MainTabs.Screen name="Search" component={Search} />
+      <MainTabs.Screen name="About" component={About} />
+      <MainTabs.Screen name="Messages" component={Messages} />
+      <MainTabs.Screen name="Settings" component={Settings} />
+    </MainTabs.Navigator>
   );
 };
 

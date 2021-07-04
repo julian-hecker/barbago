@@ -66,6 +66,9 @@ To render multiple items from an array, use `{array.map(item, index) => <Text ke
 - `SectionList`: used for rendering nested data in lists, with categories. takes props `sections`, `renderItem`, and `renderSectionHeader`
 - `RefreshControl`: used inside `ScrollView`, `FlatList`, or `SectionList` to handle pull refreshes
 
+## Ejecting
+
+
 ## Other Notes
 
 ### Using Hooks
@@ -75,3 +78,4 @@ React Hooks are now supported in React Native. For the most part, use as normal.
 ## Resources
 
 - [React Native 2021 by Mash](https://www.youtube.com/watch?v=LWs6dY92_MU&list=PL8kfZyp--gEXs4YsSLtB3KqDtdOFHMjWZ)
+- [Ejecting](https://pagepro.co/blog/how-to-eject-from-expo-managed-workflow-to-bare/)

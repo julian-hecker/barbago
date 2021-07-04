@@ -1,32 +1,35 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { Button, StyleSheet } from 'react-native';
 import { useNavigation, useTheme } from '@react-navigation/native';
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import { MainTabParams } from '../screens';
 import { Screen, Text } from '../components';
+import { MainTabScreenNavProp } from './Navigation';
 
-type HomeProps = BottomTabNavigationProp<MainTabParams, 'Home'>;
+const HomeStack = createStackNavigator();
 
-const Home: React.FC<HomeProps> = () => {
-  const navigation = useNavigation<HomeProps>();
+const HomeStackScreen = () => (
+  <HomeStack.Navigator>
+    <HomeStack.Screen name="Home" component={Home} />
+  </HomeStack.Navigator>
+);
+
+const Home = () => {
+  const navigation = useNavigation<MainTabScreenNavProp>();
   const { colors } = useTheme();
   const { text } = colors;
 
   return (
     <Screen>
-      <Text style={{}}>Home</Text>
+      <Text>Home</Text>
+      <Button
+        title="Login"
+        onPress={() => navigation.navigate('Login')}
+      />
     </Screen>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const styles = StyleSheet.create({});
 
-export default Home;
+export default HomeStackScreen;

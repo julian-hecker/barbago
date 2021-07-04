@@ -1,12 +1,14 @@
 import React from 'react';
 import { SectionList, View } from 'react-native';
 import { ListItem } from 'react-native-elements';
+import { useTheme, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { Screen, Text } from '../components';
-import { useTheme } from '@react-navigation/native';
+import { MainTabScreenNavProp } from './Navigation';
+import { ScrollView } from 'react-native';
 
-// const Stack = createStackNavigator();
+const Stack = createStackNavigator();
 
 const options = [
   {
@@ -25,7 +27,7 @@ const options = [
   { title: 'Legal', data: ['Terms of Service', 'Privacy Policy'] },
 ];
 
-const Settings: React.FC<any> = () => {
+const OldSettings: React.FC<any> = () => {
   const { colors } = useTheme();
 
   return (
@@ -67,11 +69,54 @@ const Settings: React.FC<any> = () => {
   );
 };
 
-const SettingsStack = () => {
-  return null;
-  // <Stack.Navigator>
-  //   <Stack.Screen name="Settings" component={Settings} />
-  // </Stack.Navigator>
+const Settings = () => {
+  const { navigate } = useNavigation<MainTabScreenNavProp>();
+  const { colors } = useTheme();
+
+  return (
+    <Screen style={{ alignItems: 'stretch' }}>
+      <ScrollView>
+        {options.map(({ title, data }, index) => (
+          <React.Fragment key={index}>
+            <ListItem
+              containerStyle={{
+                backgroundColor: colors.background,
+                marginTop: index ? 20 : 0,
+              }}
+            >
+              <ListItem.Subtitle style={{ color: colors.text }}>
+                {title}
+              </ListItem.Subtitle>
+            </ListItem>
+            {data.map((item, index) => (
+              <ListItem
+                bottomDivider
+                containerStyle={{
+                  backgroundColor: colors.card,
+                }}
+                onPress={() => alert('reee')}
+                key={index}
+              >
+                <ListItem.Content>
+                  <ListItem.Title style={{ color: colors.text }}>
+                    {item}
+                  </ListItem.Title>
+                </ListItem.Content>
+              </ListItem>
+            ))}
+          </React.Fragment>
+        ))}
+      </ScrollView>
+    </Screen>
+  );
 };
 
-export default Settings;
+const SettingsStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Settings" component={Settings} />
+    </Stack.Navigator>
+  );
+};
+
+export default SettingsStack;

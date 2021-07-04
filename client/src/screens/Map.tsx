@@ -3,8 +3,11 @@ import { Dimensions, StyleSheet, View } from 'react-native';
 import MapView from 'react-native-maps';
 
 import { Screen } from '../components';
+import { MainTabScreenNavProp } from './Navigation';
 
-const Map = ({ route }: any) => {
+// https://github.com/react-native-maps/react-native-maps
+
+const Map: React.FC<MainTabScreenNavProp> = (navigation) => {
   return (
     <Screen>
       <MapView style={styles.map} />

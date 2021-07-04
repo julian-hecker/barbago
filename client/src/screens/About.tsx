@@ -1,4 +1,5 @@
 import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import { Screen, Text } from '../components';
 
@@ -10,4 +11,14 @@ const About = () => {
   );
 };
 
-export default About;
+const Stack = createStackNavigator();
+
+const AboutStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="About" component={About} />
+    </Stack.Navigator>
+  );
+};
+
+export default AboutStack;

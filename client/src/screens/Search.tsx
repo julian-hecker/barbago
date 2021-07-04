@@ -1,51 +1,44 @@
-import React from 'react';
-import { Button } from 'react-native';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import React, { useRef } from 'react';
+import { GestureResponderEvent } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Modalize } from 'react-native-modalize';
 
-import { Screen, Text } from '../components';
+import { Button, Modal, Screen, Text } from '../components';
 import Map from './Map';
-import { useRef } from 'react';
 
-const Results = () => {
-  const modalizeRef = useRef<Modalize>(null);
-
-  const onOpen = () => modalizeRef.current?.open();
+const MapScreen = () => {
+  const modalRef = useRef<Modalize>(null);
 
   return (
     <Screen>
-      <Modalize ref={modalizeRef}>
-        <Text style={{ color: 'red' }}>THIS IS THE MODALIZER</Text>
-      </Modalize>
-      <Text>Results</Text>
-      <Button title="Open Modal" onPress={onOpen} />
+      <Map />
+      <Modal ref={modalRef}>
+        <Text>Reeeeee</Text>
+      </Modal>
     </Screen>
-  );
-};
-
-const TopTab = createMaterialTopTabNavigator();
-
-const Search: React.FC = () => {
-  return (
-    <>
-      <TopTab.Navigator>
-        <TopTab.Screen name="Results" component={Results} />
-        <TopTab.Screen name="Map" component={Map} />
-      </TopTab.Navigator>
-    </>
   );
 };
 
 const Stack = createStackNavigator();
 
 const SearchStack = () => {
+  const openFilters = (event: GestureResponderEvent) => alert('reee');
+
   return (
     <Stack.Navigator>
       <Stack.Screen
         name="Search"
-        component={Search}
-        options={{ title: 'Barber Search' }}
+        component={MapScreen}
+        options={{
+          title: 'Barber Search',
+          headerRight: () => (
+            <Button
+              title="Filter"
+              onPress={openFilters}
+              style={{ marginRight: 16 }}
+            />
+          ),
+        }}
       />
     </Stack.Navigator>
   );

@@ -1,13 +1,15 @@
 import React from 'react';
-import { Text } from 'react-native';
 import {
   MapContainer,
   TileLayer,
   Marker,
   Popup,
 } from 'react-leaflet';
+import { useNavigation } from '@react-navigation/core';
 import 'leaflet/dist/leaflet.css';
 import * as L from 'leaflet';
+
+import { MainTabScreenNavProp } from '../Navigation';
 
 const pinIcon = L.icon({
   iconUrl: require('leaflet/dist/images/marker-icon-2x.png'),
@@ -17,6 +19,8 @@ const pinIcon = L.icon({
 });
 
 const Map = () => {
+  const navigation = useNavigation<MainTabScreenNavProp>();
+
   return (
     <MapContainer
       center={[41.0, -73.83]}

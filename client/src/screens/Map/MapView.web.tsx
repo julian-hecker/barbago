@@ -18,7 +18,7 @@ const pinIcon = L.icon({
   popupAnchor: [0, -25],
 });
 
-const Map = () => {
+const Map = ({ data }: MapViewProps) => {
   const navigation = useNavigation<MainTabScreenNavProp>();
 
   return (
@@ -35,7 +35,7 @@ const Map = () => {
         url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png"
         attribution="&copy; Stamen Maps"
       />
-      {/* {results.map(({ name, position }, index) =>
+      {data.map(({ name, position }:any, index) =>
         position ? (
           <Marker position={position} key={index} icon={pinIcon}>
             <Popup>
@@ -44,7 +44,7 @@ const Map = () => {
             </Popup>
           </Marker>
         ) : null,
-      )} */}
+      )}
     </MapContainer>
   );
 };

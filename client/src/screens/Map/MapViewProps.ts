@@ -1,0 +1,3 @@
+interface MapViewProps {
+  data: object[];
+}

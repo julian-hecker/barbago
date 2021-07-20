@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Text } from '../../components';
 import { SettingsNavParams } from '../../utils/navigation';
 import { Settings } from './Settings';
-import { About } from './Pages';
+import { About } from '../other';
 
 const Stack = createStackNavigator<SettingsNavParams>();
 

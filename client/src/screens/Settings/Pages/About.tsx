@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { Screen, Text } from '../components';
+import { Screen, Text } from '../../../components';
 
 const About = () => {
   return (

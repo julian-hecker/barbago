@@ -18,6 +18,20 @@ export type RootNavParams = {
   Login: undefined;
 };
 
+export type SettingsNavParams = {
+  Settings: undefined;
+  Personal: undefined;
+  Payment: undefined;
+  Barber: undefined;
+  Notifications: undefined;
+  Preferences: undefined;
+  About: undefined;
+  Contact: undefined;
+  Feedback: undefined;
+  TOS: undefined;
+  Privacy: undefined;
+};
+
 export type RootStackNavProp = StackNavigationProp<
   RootNavParams,
   'Main'
@@ -38,4 +52,19 @@ export type MainTabScreenProps = {
 export type MainTabScreenNavProp = CompositeNavigationProp<
   RootStackNavProp,
   MainTabNavProp
+>;
+
+export type SettingStackNavProp =
+  StackNavigationProp<SettingsNavParams>;
+export type SettingStackRouteProp = RouteProp<
+  SettingsNavParams,
+  'Settings'
+>;
+export type SettingStackRouteScreenProp = {
+  route: SettingStackRouteProp;
+  navigation: SettingStackNavProp;
+};
+export type SettingScreenNavProp = CompositeNavigationProp<
+  MainTabScreenNavProp,
+  SettingStackNavProp
 >;

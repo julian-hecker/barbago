@@ -13,7 +13,6 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import ContextProvider from './context/index';
 import {
   Home,
-  About,
   Search,
   Settings,
   Messages,
@@ -70,9 +69,6 @@ const MainTabScreen = ({
             case 'Home':
               iconName = 'home';
               break;
-            case 'About':
-              iconName = 'information';
-              break;
             case 'Messages':
               iconName = 'chat';
               break;
@@ -97,7 +93,6 @@ const MainTabScreen = ({
     >
       <MainTabs.Screen name="Home" component={Home} />
       <MainTabs.Screen name="Search" component={Search} />
-      <MainTabs.Screen name="About" component={About} />
       <MainTabs.Screen name="Messages" component={Messages} />
       <MainTabs.Screen name="Settings" component={Settings} />
     </MainTabs.Navigator>

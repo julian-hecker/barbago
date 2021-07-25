@@ -1,5 +1,4 @@
 import Home from './Home';
-import About from './About';
 import Search from './Search';
 import Settings from './Settings';
 import Map from './Map';
@@ -10,7 +9,6 @@ import Welcome from './Welcome';
 
 export {
   Home,
-  About,
   Search,
   Settings,
   Map,

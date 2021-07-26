@@ -16,10 +16,9 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
+      "usesAppleSignIn": true,
       "supportsTablet": true,
       "bundleIdentifier": "com.julianheckerdev.barbagoapp"
     },
@@ -33,10 +32,7 @@
     "web": {
       "build": {
         "babel": {
-          "include": [
-            "react-router-native",
-            "react-leaflet"
-          ]
+          "include": ["react-router-native", "react-leaflet"]
         }
       },
       "favicon": "./assets/favicon.png"

@@ -10,7 +10,7 @@ import { registerRootComponent } from 'expo';
 import { StatusBar } from 'expo-status-bar';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import ContextProvider from './context/index';
+import ContextProvider from './context';
 import {
   Home,
   Search,
@@ -20,11 +20,11 @@ import {
   Signup,
   Welcome,
 } from './screens';
+import { LightTheme, DarkTheme } from './utils';
 import {
   MainTabParams,
   RootStackScreenProps,
 } from './utils/navigation';
-import { LightTheme, DarkTheme } from './utils';
 
 const RootStack = createStackNavigator();
 

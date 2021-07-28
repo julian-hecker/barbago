@@ -1,14 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import firebase from 'firebase/app';
 import { maybeCompleteAuthSession } from 'expo-web-browser';
 import { useIdTokenAuthRequest } from 'expo-auth-session/providers/google';
 
 import { Button } from '../../components';
 import firebaseApp from '../../config/firebase';
+import { UserContext } from '../../context';
 
 maybeCompleteAuthSession();
 
 export const GoogleAuthComponent = () => {
+  const { setUser } = useContext(UserContext);
+
   const [request, response, promptAsync] = useIdTokenAuthRequest({
     clientId:
       '826208380986-b35gmhcidcsm9415okp8tj8nrj63ehhr.apps.googleusercontent.com',
@@ -19,7 +22,14 @@ export const GoogleAuthComponent = () => {
       const { id_token } = response.params;
       const credential =
         firebase.auth.GoogleAuthProvider.credential(id_token);
-      firebaseApp.auth().signInWithCredential(credential);
+      firebaseApp
+        .auth()
+        .signInWithCredential(credential)
+        .then((res) => {
+          const profile = res.additionalUserInfo?.profile;
+          setUser(profile);
+        })
+        .catch((err) => console.error(err));
     }
   }, [response]);
   return (

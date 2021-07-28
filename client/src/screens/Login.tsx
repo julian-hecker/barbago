@@ -5,7 +5,6 @@ import firebaseApp from '../config/firebase';
 import { UserContext } from '../context';
 import {
   AppleAuthComponent,
-  FacebookAuthComponent,
   GoogleAuthComponent,
 } from '../services/Auth';
 import { RootStackScreenProps } from '../utils/navigation';
@@ -17,7 +16,6 @@ const Login = ({ navigation, route }: RootStackScreenProps) => {
     <Screen>
       <Text>LOGGING IN TIME NOW</Text>
       <GoogleAuthComponent />
-      <FacebookAuthComponent />
       <AppleAuthComponent />
     </Screen>
   );

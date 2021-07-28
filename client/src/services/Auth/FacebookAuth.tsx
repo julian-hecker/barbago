@@ -25,7 +25,7 @@ export const FacebookAuthComponent = () => {
         .signInWithCredential(credential)
         .then((res) => {
           const profile = res.additionalUserInfo?.profile!;
-          console.log(profile)
+          console.log(profile);
         })
         .catch((err) => console.error(err));
     }
@@ -43,3 +43,4 @@ export const FacebookAuthComponent = () => {
 
 // https://docs.expo.io/guides/authentication/#facebook
 // https://developers.facebook.com/apps/3025265811132416/fb-login/settings/
+// https://derk-jan.com/2020/05/expo-facebook-login/

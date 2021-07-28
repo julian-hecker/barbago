@@ -1,17 +1,15 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import firebase from 'firebase/app';
 import { ResponseType } from 'expo-auth-session';
 import { useAuthRequest } from 'expo-auth-session/providers/facebook';
 import { maybeCompleteAuthSession } from 'expo-web-browser';
-import firebase from 'firebase/app';
 
 import { Button } from '../../components';
 import firebaseApp from '../../config/firebase';
-import { UserContext } from '../../context';
 
 maybeCompleteAuthSession();
 
 export const FacebookAuthComponent = () => {
-  const { setUser } = useContext(UserContext);
   const [request, response, promptAsync] = useAuthRequest({
     responseType: ResponseType.Token,
     clientId: '3025265811132416',
@@ -27,7 +25,7 @@ export const FacebookAuthComponent = () => {
         .signInWithCredential(credential)
         .then((res) => {
           const profile = res.additionalUserInfo?.profile!;
-          setUser(profile);
+          console.log(profile)
         })
         .catch((err) => console.error(err));
     }

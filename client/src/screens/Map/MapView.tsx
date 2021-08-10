@@ -3,7 +3,7 @@ import { Dimensions, StyleSheet, View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { useNavigation } from '@react-navigation/core';
 
-import { MainTabScreenNavProp } from '../../utils/navigation';
+import { MainTabScreenNavProp } from '../../types/navigation';
 
 // https://github.com/react-native-maps/react-native-maps
 

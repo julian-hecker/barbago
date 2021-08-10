@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { Text } from '../../components';
-import { SettingsNavParams } from '../../utils/navigation';
+import { SettingsNavParams } from '../../types/navigation';
 import { Settings } from './Settings';
 import { About } from '../other';
 

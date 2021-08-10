@@ -9,7 +9,7 @@ import { useNavigation } from '@react-navigation/core';
 import 'leaflet/dist/leaflet.css';
 import * as L from 'leaflet';
 
-import { MainTabScreenNavProp } from '../../utils/navigation';
+import { MainTabScreenNavProp } from '../../types/navigation';
 
 const pinIcon = L.icon({
   iconUrl: require('leaflet/dist/images/marker-icon-2x.png'),

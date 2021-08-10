@@ -3,6 +3,5 @@ import {
   CustomDarkTheme as DarkTheme,
 } from './themes';
 import * as Devices from './devices';
-import * as Navigation from './navigation';
 
-export { LightTheme, DarkTheme, Devices, Navigation };
+export { LightTheme, DarkTheme, Devices };

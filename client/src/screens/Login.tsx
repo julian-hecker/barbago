@@ -7,7 +7,7 @@ import {
   AppleAuthComponent,
   GoogleAuthComponent,
 } from '../services/Auth';
-import { RootStackScreenProps } from '../utils/navigation';
+import { RootStackScreenProps } from '../types/navigation';
 
 const Login = ({ navigation, route }: RootStackScreenProps) => {
   const user = useContext(UserContext);

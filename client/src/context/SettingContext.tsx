@@ -1,26 +1,50 @@
-import React, { createContext, Dispatch, SetStateAction, useState } from 'react';
+import React, { createContext, Dispatch, useReducer } from 'react';
 import { ISettings } from '../types/settings';
+
+const initialSettings: ISettings = {
+  notifications: {
+    pushNotifications: true,
+    emailNotifications: true,
+    messageNotifications: true,
+  },
+};
+
+type SettingAction =
+  | { type: ''; payload: object }
+  | { type: '' }
+  | { type: 'reee' };
+
+const settingReducer: React.Reducer<ISettings, SettingAction> = (
+  prevState = initialSettings,
+  action,
+) => {
+  switch (action.type) {
+    case '':
+      return {
+        ...prevState,
+      };
+    default:
+      return prevState;
+  }
+};
 
 export const SettingContext = createContext<
   Partial<{
-    settings: ISettings;
-    setSettings: Dispatch<SetStateAction<ISettings>>;
+    settingState: ISettings;
+    settingDispatch: Dispatch<SettingAction>;
   }>
 >({});
 
 export const SettingContextProvider: React.FC = ({ children }) => {
-  const initialSettings: ISettings = {
-    notifications: {
-      pushNotifications: true,
-      emailNotifications: true,
-      messageNotifications: true,
-    },
-  };
-
-  const [settings, setSettings] = useState(initialSettings);
+  const [settingState, settingDispatch] = useReducer(
+    settingReducer,
+    initialSettings,
+  );
 
   return (
-    <SettingContext.Provider value={{ settings, setSettings }}>
+    <SettingContext.Provider
+      value={{ settingState, settingDispatch }}
+    >
       {children}
     </SettingContext.Provider>
   );

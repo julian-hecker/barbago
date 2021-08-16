@@ -1,11 +1,12 @@
 import React from 'react';
-import { Screen, Text } from '../../components';
+import { TextScreen, Text, Header } from '../../components';
 
 const PrivacyScreen = () => {
   return (
-    <Screen>
-      <Text>Privacy Policy</Text>
-    </Screen>
+    <TextScreen>
+      <Header>Barbago Privacy Policy</Header>
+      <Text></Text>
+    </TextScreen>
   );
 };
 

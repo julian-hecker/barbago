@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TextStyle } from 'react-native';
+import { StyleSheet, Text, TextStyle } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 
 type TextProps = {
@@ -10,7 +10,7 @@ const ThemedText: React.FC<TextProps> = ({ children, style }) => {
   const { colors } = useTheme();
 
   return (
-    <Text style={{ ...style, color: colors.text }}>{children}</Text>
+    <Text style={[{ color: colors.text }, style]}>{children}</Text>
   );
 };
 

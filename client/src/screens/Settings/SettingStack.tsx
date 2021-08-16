@@ -1,7 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { Text } from '../../components';
 import { SettingsNavParams } from '../../types/navigation';
 import { Settings } from './Settings';
 import {

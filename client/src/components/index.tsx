@@ -1,3 +1,5 @@
+export { default as ProtectedScreen } from './ProtectedScreen';
+export { default as Redirect } from './Redirect';
 export { default as Screen } from './Screen';
 export { default as Spacer } from './Spacer';
 export { default as Button } from './ThemedButton';

@@ -4,10 +4,9 @@ import { ListItem } from 'react-native-elements';
 import { useTheme, useNavigation } from '@react-navigation/native';
 
 import { Screen } from '../../components';
-import { SettingStackNavProp } from '../../types/navigation';
 
 export const Settings = () => {
-  const navigation = useNavigation<SettingStackNavProp>();
+  const navigation = useNavigation<any>();
 
   const { colors } = useTheme();
 

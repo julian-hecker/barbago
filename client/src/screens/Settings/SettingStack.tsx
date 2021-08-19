@@ -1,7 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { SettingsNavParams } from '../../types/navigation';
 import { Settings } from './Settings';
 import {
   About,
@@ -16,7 +15,7 @@ import {
   TermsScreen,
 } from '../other';
 
-const Stack = createStackNavigator<SettingsNavParams>();
+const Stack = createStackNavigator();
 
 // This is  where the inline function return component warning comes from
 

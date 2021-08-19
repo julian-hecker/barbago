@@ -4,9 +4,6 @@ import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { Screen, Text } from '../components';
-import { MainTabScreenNavProp } from '../types/navigation';
-
-// Might have to rework the entire navigation system for authentication to work.
 
 const HomeStack = createStackNavigator();
 
@@ -17,7 +14,7 @@ const HomeStackScreen = () => (
 );
 
 const Home = () => {
-  const navigation = useNavigation<MainTabScreenNavProp>();
+  const navigation = useNavigation();
 
   return (
     <Screen>

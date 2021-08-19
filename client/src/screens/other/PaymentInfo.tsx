@@ -1,11 +1,11 @@
 import React from 'react';
-import { Screen, Text } from '../../components';
+import { ProtectedScreen, Text } from '../../components';
 
 const PaymentInfo = () => {
   return (
-    <Screen>
+    <ProtectedScreen route={'Login'}>
       <Text>Payment</Text>
-    </Screen>
+    </ProtectedScreen>
   );
 };
 

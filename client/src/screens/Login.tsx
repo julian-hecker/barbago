@@ -1,16 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import { Screen, Text } from '../components';
-import firebaseApp from '../config/firebase';
-import { UserContext } from '../context';
 import {
   AppleAuthComponent,
   GoogleAuthComponent,
 } from '../services/Auth';
-import { RootStackScreenProps } from '../types/navigation';
 
-const Login = ({ navigation, route }: RootStackScreenProps) => {
-  const user = useContext(UserContext);
+const Login = () => {
 
   return (
     <Screen>

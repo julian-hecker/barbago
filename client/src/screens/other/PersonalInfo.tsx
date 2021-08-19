@@ -1,11 +1,11 @@
 import React from 'react';
-import { Screen, Text } from '../../components';
+import { ProtectedScreen, Text } from '../../components';
 
 const PersonalInfo = () => {
   return (
-    <Screen>
+    <ProtectedScreen route={'Login'}>
       <Text>Personal</Text>
-    </Screen>
+    </ProtectedScreen>
   );
 };
 

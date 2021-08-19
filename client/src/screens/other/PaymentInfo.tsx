@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { ProtectedScreen, Text } from '../../components';
 
 const PaymentInfo = () => {

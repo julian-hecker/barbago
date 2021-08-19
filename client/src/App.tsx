@@ -21,10 +21,6 @@ import {
   Welcome,
 } from './screens';
 import { LightTheme, DarkTheme } from './utils';
-import {
-  MainTabParams,
-  RootStackScreenProps,
-} from './types/navigation';
 
 const RootStack = createStackNavigator();
 
@@ -54,12 +50,9 @@ const App = () => {
   );
 };
 
-const MainTabs = createBottomTabNavigator<MainTabParams>();
+const MainTabs = createBottomTabNavigator();
 
-const MainTabScreen = ({
-  navigation,
-  route,
-}: RootStackScreenProps) => {
+const MainTabScreen = () => {
   return (
     <MainTabs.Navigator
       screenOptions={({ route }) => ({

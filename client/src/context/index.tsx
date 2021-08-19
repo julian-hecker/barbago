@@ -1,14 +1,16 @@
 import React from 'react';
+import { AppearanceProvider } from 'react-native-appearance';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { UserContextProvider, UserContext } from './UserContext';
 
-import UserContext from './UserContext';
-import SettingContext from './SettingContext';
-
-const ContextProvider: React.FC = ({ children }: any) => {
-  return (
-    <UserContext>
-      <SettingContext>{children}</SettingContext>
-    </UserContext>
-  );
-};
+const ContextProvider: React.FC = ({ children }) => (
+  <UserContextProvider>
+    <SafeAreaProvider>
+      <AppearanceProvider>{children}</AppearanceProvider>
+    </SafeAreaProvider>
+  </UserContextProvider>
+);
 
 export default ContextProvider;
+
+export { UserContext };

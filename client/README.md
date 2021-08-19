@@ -1,46 +1,81 @@
-# Getting Started with Create React App
+# React Native Notes
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Creating a React Native Project
 
-## Available Scripts
+You can either use an Expo Managed Workflow or work directly with the React Native CLI. I'm using Expo to be able to compile for iOS without needing a mac.
 
-In the project directory, you can run:
+### Expo Managed Workflow
 
-### `npm start`
+Steps:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. `npm i -g expo-cli` Installs expo
+2. `expo init client` creates project
+3. `npm run web` runs project in browser
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Configuration:
 
-### `npm test`
+- To specify a new entry file:
+  1. Add `"entryPoint"` key in `app.json`.
+  2. Change `"main"` key in `package.json`.
+  3. Use `export default registerRootComponent(App);` on your root component.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## React Native Components
 
-### `npm run build`
+### Basic Components
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `StyleSheet`: An object with method `create`, which lets you create style objects with intellisense. Better than creating raw JavaScript objects. There is not really a cascade or tag selectors in this format.
+- `Text`: must be used whenever including any text. Can't just include it inside any other components.
+- `View`: Similar to div, a container for layout
+- `Image`: Displays the images given in the `source` property. To use, you do an inline require. `source={require('../assets/icon.png')}`
+  - For images with a source on the web, use `source={{uri: 'https://...'}}`
+  - Can use `resizeMode` prop to specify how it will resize based on resizing screen
+  - `defaultSource` prop gives fallback image source
+- `ImageBackground`, wraps around whatever components you want to give a background to. 
+- `Linking`: Gives tools for opening a browser. **Can't do target="\_blank"**.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Interactive Components
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `TextInput`: Allows users to input text. Use `onChangeText` prop to update state; **parameter automatically has text's value**, rather than using `event.target.value`. Takes following props:
+  - placeholder, keyboardType, multiline, style, maxLength, editable, secureTextEntry.
+- `Button`: interactive, using the `onPress` prop. Already has some styles. Takes `title` property, not text.
+  - Takes props `color`, `disabled`, etc
+- Touchables
+  - `TouchableOpacity`: Interactive button with only basic styling. Increases opacity when tapped.
+  - `TouchableHighlight`: Same as TouchableOpacity but adds a highlight specified in `underlayColor` when tapped.
+  - `TouchableWithoutFeedback`: Same as last two but gives no visual feedback when tapped. Cannot be styled directly.
+- `Pressable`: Generic interactive that has several handlers for different stages of pressing. Better than button.
+  - `onPressIn`, `onPressOut`, `onPress`, `onLongPress`
+  - can use `hitSlop` prop to increase pressable area.
+  - can use `androidRipple` for android devices.
 
-### `npm run eject`
+### Feedback Components
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- `Alert`: object with method `alert`, default system alert.
+- `Toast`: **Android only!** has method `show`.
+- `Modal`: Covers the screen with a modal. Can put any component inside for custom display. Can be styled any desired way. Is open by default.
+  - Takes props `transparent`, `visible`, `onRequestClose`, `animationType`.
+  - Use state to determine if modal should be open or not.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Rendering Lists
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To render multiple items from an array, use `{array.map(item, index) => <Text key={index}>{item.title}</Text>}`.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- `ScrollView`: A view that has the ability to scroll its children.
+- `FlatList`: takes `data` and `renderItem` props to more efficiently render lists of data. only renders what is visible.
+  - Can also specify a `keyExtractor` prop which automatically adds `key` to each item
+- `SectionList`: used for rendering nested data in lists, with categories. takes props `sections`, `renderItem`, and `renderSectionHeader`
+- `RefreshControl`: used inside `ScrollView`, `FlatList`, or `SectionList` to handle pull refreshes
 
-## Learn More
+## Ejecting
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Other Notes
+
+### Using Hooks
+
+React Hooks are now supported in React Native. For the most part, use as normal.
+
+## Resources
+
+- [React Native 2021 by Mash](https://www.youtube.com/watch?v=LWs6dY92_MU&list=PL8kfZyp--gEXs4YsSLtB3KqDtdOFHMjWZ)
+- [Ejecting](https://pagepro.co/blog/how-to-eject-from-expo-managed-workflow-to-bare/)

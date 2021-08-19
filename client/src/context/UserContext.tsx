@@ -1,30 +1,30 @@
 import React, { createContext, useEffect, useState } from 'react';
+import firebase from 'firebase';
 
-// https://kentcdodds.com/blog/how-to-use-react-context-effectively
+import firebaseApp from '../config/firebase';
 
-// Using context with localstorage
-// https://gist.github.com/jimode/c1d2d4c1ab33ba1b7be8be8c50d64555
+export const UserContext = createContext<Partial<firebase.User>>({});
 
-// How to update context from child
-// https://dev.to/oieduardorabelo/react-hooks-how-to-create-and-update-contextprovider-1f68
+export const UserContextProvider: React.FC = ({ children }) => {
+  const [user, setUser] = useState<Partial<firebase.User>>({});
 
-export const UserContext = createContext<any>({});
-
-const UserContextProvider: React.FC = ({ children }: any) => {
-  const [user, setUser] = useState<any>({ user: null });
+  firebaseApp.auth().onAuthStateChanged((user) => {
+    console.log(user);
+  });
 
   useEffect(() => {
-    fetch('/auth/user', { credentials: 'include' })
-      .then((res) => res.json())
-      .then((res) => res.data && setUser(res.data))
-      .catch((err) => console.error(err));
+    firebaseApp.auth().onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        setUser({});
+      }
+    });
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={user}>
       {children}
     </UserContext.Provider>
   );
 };
-
-export default UserContextProvider;

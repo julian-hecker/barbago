@@ -1,134 +1,95 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useRef } from 'react';
+import { useColorScheme } from 'react-native-appearance';
 import {
-  IonApp,
-  IonTabBar,
-  IonTabs,
-  IonTabButton,
-  IonRouterOutlet,
-  IonIcon,
-  IonLabel,
-} from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
-import { chatbubbles, home, search, settings } from 'ionicons/icons';
-import { Switch, Redirect } from 'react-router-dom';
+  NavigationContainer,
+  NavigationContainerRef,
+} from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+import { registerRootComponent } from 'expo';
+import { StatusBar } from 'expo-status-bar';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import ConditionalRoute from './components/ConditionalRoute';
-import { UserContext } from './context/UserContext';
+import ContextProvider from './context';
+import {
+  Home,
+  Search,
+  Settings,
+  Messages,
+  Login,
+  Signup,
+  Welcome,
+} from './screens';
+import { LightTheme, DarkTheme } from './utils';
 
-import Welcome from './pages/Welcome/Welcome';
-import Home from './pages/Home/Home';
-import Search from './pages/Search/Search';
-import Login from './pages/Login/Login';
-import Signup from './pages/Signup/Signup';
-import Settings from './pages/Settings/Settings';
-import Messages from './pages/Messages/Messages';
-// Account? Profile? Edit Profile? Services? Schedule?
+const RootStack = createStackNavigator();
 
-// To do: Add application-level notification area
-// Decide on using firebase or node-express for backend
-
-import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
-// GoogleAuth.init();
-GoogleAuth.signIn();
-
-const App: React.FC = () => {
-  const { user, setUser } = useContext(UserContext);
-
-  const googleSignup = async () => {
-    try {
-      const googleUser = await GoogleAuth.signIn();
-      console.log(googleUser);
-      return googleUser;
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    console.log(user);
-    setUser(googleSignup());
-  }, []);
-
-  const routes = [
-    {
-      path: '/:tab(home)',
-      component: Home,
-    },
-    {
-      path: '/:tab(search)',
-      component: Search,
-    },
-    {
-      path: '/:tab(messages)',
-      component: Messages,
-      condition: user.user,
-      redirect: '/signup',
-    },
-    {
-      path: '/:tab(settings)',
-      component: Settings,
-    },
-    {
-      path: '/welcome',
-      component: Welcome,
-    },
-    {
-      path: '/login',
-      component: Login,
-    },
-    {
-      path: '/signup',
-      component: Signup,
-    },
-  ];
-
-  const tabs = [
-    {
-      text: 'Home',
-      path: '/home',
-      icon: home,
-    },
-    {
-      text: 'Search',
-      path: '/search',
-      icon: search,
-    },
-    {
-      text: 'Messages',
-      path: '/messages',
-      icon: chatbubbles,
-    },
-    {
-      text: 'Settings',
-      path: '/settings',
-      icon: settings,
-    },
-  ];
+const App = () => {
+  const navRef = useRef<NavigationContainerRef>(null);
+  const scheme = useColorScheme();
 
   return (
-    <IonApp>
-      <IonReactRouter>
-        <IonTabs>
-          <IonRouterOutlet>
-            <Switch>
-              <Redirect exact path="/" to="/welcome" />
-              {routes.map((props, key) => (
-                <ConditionalRoute key={key} {...props} />
-              ))}
-            </Switch>
-          </IonRouterOutlet>
-          <IonTabBar slot="bottom">
-            {tabs.map(({ text, path, icon }, key) => (
-              <IonTabButton tab={text} href={path} key={key}>
-                <IonIcon icon={icon} />
-                <IonLabel>{text}</IonLabel>
-              </IonTabButton>
-            ))}
-          </IonTabBar>
-        </IonTabs>
-      </IonReactRouter>
-    </IonApp>
+    <ContextProvider>
+      <StatusBar style="auto" />
+      <NavigationContainer
+        ref={navRef}
+        theme={scheme === 'dark' ? DarkTheme : LightTheme}
+      >
+        <RootStack.Navigator mode="modal" headerMode="float">
+          <RootStack.Screen
+            name="Main"
+            options={{ headerShown: false }}
+            component={MainTabScreen}
+          />
+          <RootStack.Screen name="Login" component={Login} />
+          <RootStack.Screen name="Signup" component={Signup} />
+          <RootStack.Screen name="Welcome" component={Welcome} />
+        </RootStack.Navigator>
+      </NavigationContainer>
+    </ContextProvider>
   );
 };
 
-export default App;
+const MainTabs = createBottomTabNavigator();
+
+const MainTabScreen = () => {
+  return (
+    <MainTabs.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ color, focused, size }) => {
+          let iconName;
+          switch (route.name) {
+            case 'Home':
+              iconName = 'home';
+              break;
+            case 'Messages':
+              iconName = 'chat';
+              break;
+            case 'Search':
+              iconName = 'magnify';
+              break;
+            case 'Settings':
+              iconName = 'cog';
+              break;
+            default:
+              return null;
+          }
+          return (
+            <MaterialCommunityIcons
+              name={iconName as any}
+              size={24}
+              color={color}
+            />
+          );
+        },
+      })}
+    >
+      <MainTabs.Screen name="Home" component={Home} />
+      <MainTabs.Screen name="Search" component={Search} />
+      <MainTabs.Screen name="Messages" component={Messages} />
+      <MainTabs.Screen name="Settings" component={Settings} />
+    </MainTabs.Navigator>
+  );
+};
+
+export default registerRootComponent(App);

@@ -1,41 +1,51 @@
-import { createContext, useEffect, useState } from 'react';
+import React, { createContext, Dispatch, useReducer } from 'react';
+import { ISettings } from '../types/settings';
 
-export const SettingContext = createContext<any>({});
+const initialSettings: ISettings = {
+  notifications: {
+    pushNotifications: true,
+    emailNotifications: true,
+    messageNotifications: true,
+  },
+};
 
-const SettingContextProvider: React.FC = ({ children }) => {
-  const initialSettings = {
-    push: true,
-    email: true,
-    messages: true,
-    first: '',
-    last: '',
-    dark: window?.matchMedia('(prefers-color-scheme: dark)').matches,
-  };
+type SettingAction =
+  | { type: ''; payload: object }
+  | { type: '' }
+  | { type: 'reee' };
 
-  const localSettings = localStorage.getItem('settings');
+const settingReducer: React.Reducer<ISettings, SettingAction> = (
+  prevState = initialSettings,
+  action,
+) => {
+  switch (action.type) {
+    case '':
+      return {
+        ...prevState,
+      };
+    default:
+      return prevState;
+  }
+};
 
-  const [settings, setSettings] = useState<any>(
-    localSettings ? JSON.parse(localSettings) : initialSettings,
+export const SettingContext = createContext<
+  Partial<{
+    settingState: ISettings;
+    settingDispatch: Dispatch<SettingAction>;
+  }>
+>({});
+
+export const SettingContextProvider: React.FC = ({ children }) => {
+  const [settingState, settingDispatch] = useReducer(
+    settingReducer,
+    initialSettings,
   );
-  
-  useEffect(() => {
-    try {
-      localStorage.setItem('settings', JSON.stringify(settings));
-    } catch (err) {
-      console.error(err);
-    }
-  }, [settings]);
-  
-  useEffect(() => {
-    if (settings.dark) document.body.classList.add('dark');
-    else document.body.classList.remove('dark');
-  }, [settings.dark]);
-  
+
   return (
-    <SettingContext.Provider value={{ settings, setSettings }}>
+    <SettingContext.Provider
+      value={{ settingState, settingDispatch }}
+    >
       {children}
     </SettingContext.Provider>
   );
 };
-
-export default SettingContextProvider;

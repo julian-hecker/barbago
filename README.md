@@ -8,26 +8,19 @@ This project is a monorepository with both frontend and backend code.
 
 ```bash
 client
-├───android # compiled android app (no touch)
-├───public # static assets
+├───assets # assets used by app
 ├───resources # logo, splash image
 └───src
-    ├───assets # images, etc
     ├───components # reusable components here
     ├───config # environment vars and such
     ├───context # state management here
-    ├───pages # complex page components here
+    ├───screens # complex page components here
     ├───services # api calls
+    ├───types # typescript helper files
     └───utils # helper functions
-
-server
-└───src # contains source code
-    ├───auth # modules pertaining to authentication
-    ├───config # environment vars and database
-    ├───controllers # methods called by routes
-    ├───models # interfaces to database
-    ├───routes # visitable routes
-    └───utils # helper functions
+docs # automatic api documentation by apidoc
+functions # firebase cloud functions backend
+└───src # contains source code express app
 ```
 
 ## Stack
@@ -42,16 +35,15 @@ server
 
 ### Backend:
 
-- Node
-- TypeScript
+- Firebase
+- NodeJS
 - Express
-- Sequelize
 
 ### Mobile
 
-Application is compiled to a iOS or Android WebView using Capacitor. Don't touch!
+Application is compiled to mobile Android and iOS using React Native and Expo.
 
-## How to use
+<!-- ## How to use
 
 You can run this project locally on your own machine.
 
@@ -61,7 +53,7 @@ You can run this project locally on your own machine.
 4. You may need to synchronize the database. To do this, connect to the database and run `sequelize.sync({force: true})` (JavaScript) to synchronize models to the database.
 5. Finally, you can start developing! run `npm run dev` in the root to simultaneously run dev servers for the front and back end.
 6. To build for production, run `npm run build` to build server, client, and even mobile.
-7. To deploy to production, make a pull request to the master branch which will automatically be deployed to Heroku and start running using the `npm start` script.
+7. To deploy to production, make a pull request to the master branch which will automatically be deployed to Heroku and start running using the `npm start` script. -->
 
 ## Features
 

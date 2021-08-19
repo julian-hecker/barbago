@@ -1,7 +1,7 @@
 export interface ISettings {
   notifications: INotificationSettings;
   // preferences: IPreferenceSettings;
-  personal?: IPersonalSettings
+  personal?: IPersonalSettings;
 }
 
 export interface INotificationSettings {

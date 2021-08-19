@@ -35,7 +35,7 @@ const Map = ({ data }: MapViewProps) => {
         url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png"
         attribution="&copy; Stamen Maps"
       />
-      {data.map(({ name, position }:any, index) =>
+      {data.map(({ name, position }: any, index) =>
         position ? (
           <Marker position={position} key={index} icon={pinIcon}>
             <Popup>

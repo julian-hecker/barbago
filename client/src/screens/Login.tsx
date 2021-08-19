@@ -7,7 +7,6 @@ import {
 } from '../services/Auth';
 
 const Login = () => {
-
   return (
     <Screen>
       <Text>LOGGING IN TIME NOW</Text>

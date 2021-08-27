@@ -70,7 +70,6 @@ const MainTabScreen = () => {
 export default registerRootComponent(App);
 
 // To do:
-// Deep Linking with React Navigation https://www.youtube.com/watch?v=_fVNt1KjkEk
 // Form Validation for Contact Form, PersonalInfo pages.
 // User Accounts in Firebase Database
 // Letting Barbers set up their accounts.

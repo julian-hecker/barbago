@@ -23,6 +23,10 @@ const Home = () => {
         title="Login"
         onPress={() => navigation.navigate('Login')}
       />
+      <Button
+        title="Settings"
+        onPress={() => navigation.navigate('Settings')}
+      />
     </Screen>
   );
 };

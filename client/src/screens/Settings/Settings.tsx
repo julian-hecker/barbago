@@ -51,7 +51,7 @@ export const Settings = () => {
       pages: [
         {
           name: 'How Barbago Works',
-          action: () => navigation.push('About'),
+          action: () => navigation.push('Welcome'),
         },
         {
           name: 'Contact',

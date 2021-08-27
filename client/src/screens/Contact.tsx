@@ -1,5 +1,5 @@
 import React from 'react';
-import { Screen, Text } from '../../components';
+import { Screen, Text } from '../components';
 
 const ContactScreen = () => {
   return (

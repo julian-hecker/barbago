@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, ViewStyle } from 'react-native';
+import { StyleSheet, ScrollView, ViewStyle } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 
 type ThemedTextScreenProps = {
@@ -13,7 +13,11 @@ const ThemedTextScreen: React.FC<ThemedTextScreenProps> = ({
   const { colors } = useTheme();
 
   return (
-    <View
+    <ScrollView
+      contentContainerStyle={{
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
+      }}
       style={[
         styles.screen,
         { backgroundColor: colors.background },
@@ -21,7 +25,7 @@ const ThemedTextScreen: React.FC<ThemedTextScreenProps> = ({
       ]}
     >
       {children}
-    </View>
+    </ScrollView>
   );
 };
 
@@ -29,8 +33,6 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor: '#fff',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
     padding: 20,
   },
 });

@@ -1,19 +1,10 @@
-import Home from './Home';
-import Search from './Search';
-import Settings from './Settings';
-import Map from './Map';
-import Messages from './Messages';
-import Login from './Login';
-import Signup from './Signup';
-import Welcome from './Welcome';
-
-export {
-  Home,
-  Search,
-  Settings,
-  Map,
-  Messages,
-  Login,
-  Signup,
-  Welcome,
-};
+export { default as Home } from './Home';
+export { default as Search } from './Search';
+export { default as Map } from './Map';
+export { default as Settings } from './Settings';
+export { default as Messages } from './Messages';
+export { default as Login } from './Login';
+export { default as Signup } from './Signup';
+export { default as Welcome } from './Welcome';
+export { default as Contact } from './Contact';
+export { default as Feedback } from './Feedback';

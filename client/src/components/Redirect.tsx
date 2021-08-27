@@ -21,7 +21,7 @@ const Redirect: React.FC<RedirectProps> = ({
       if (route) navigation.navigate(route);
     }
   }, []);
-  return <View></View>;
+  return <View style={{ display: 'none' }}></View>;
 };
 
 export default Redirect;

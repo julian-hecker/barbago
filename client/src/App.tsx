@@ -8,7 +8,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { registerRootComponent } from 'expo';
 import { StatusBar } from 'expo-status-bar';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import ContextProvider from './context';
 import {
@@ -19,8 +18,10 @@ import {
   Login,
   Signup,
   Welcome,
+  Contact,
+  Feedback,
 } from './screens';
-import { LightTheme, DarkTheme } from './utils';
+import { CustomLightTheme, CustomDarkTheme, linking, setRouteIcons } from './utils';
 
 const RootStack = createStackNavigator();
 
@@ -33,7 +34,8 @@ const App = () => {
       <StatusBar style="auto" />
       <NavigationContainer
         ref={navRef}
-        theme={scheme === 'dark' ? DarkTheme : LightTheme}
+        theme={scheme === 'dark' ? CustomDarkTheme : CustomLightTheme}
+        linking={linking}
       >
         <RootStack.Navigator mode="modal" headerMode="float">
           <RootStack.Screen
@@ -44,6 +46,8 @@ const App = () => {
           <RootStack.Screen name="Login" component={Login} />
           <RootStack.Screen name="Signup" component={Signup} />
           <RootStack.Screen name="Welcome" component={Welcome} />
+          <RootStack.Screen name="Contact" component={Contact} />
+          <RootStack.Screen name="Feedback" component={Feedback} />
         </RootStack.Navigator>
       </NavigationContainer>
     </ContextProvider>
@@ -54,36 +58,7 @@ const MainTabs = createBottomTabNavigator();
 
 const MainTabScreen = () => {
   return (
-    <MainTabs.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ color, focused, size }) => {
-          let iconName;
-          switch (route.name) {
-            case 'Home':
-              iconName = 'home';
-              break;
-            case 'Messages':
-              iconName = 'chat';
-              break;
-            case 'Search':
-              iconName = 'magnify';
-              break;
-            case 'Settings':
-              iconName = 'cog';
-              break;
-            default:
-              return null;
-          }
-          return (
-            <MaterialCommunityIcons
-              name={iconName as any}
-              size={24}
-              color={color}
-            />
-          );
-        },
-      })}
-    >
+    <MainTabs.Navigator screenOptions={setRouteIcons}>
       <MainTabs.Screen name="Home" component={Home} />
       <MainTabs.Screen name="Search" component={Search} />
       <MainTabs.Screen name="Messages" component={Messages} />
@@ -93,3 +68,9 @@ const MainTabScreen = () => {
 };
 
 export default registerRootComponent(App);
+
+// To do:
+// Deep Linking with React Navigation https://www.youtube.com/watch?v=_fVNt1KjkEk
+// Form Validation for Contact Form, PersonalInfo pages.
+// User Accounts in Firebase Database
+// Letting Barbers set up their accounts.

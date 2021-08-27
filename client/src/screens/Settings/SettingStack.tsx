@@ -3,21 +3,16 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { Settings } from './Settings';
 import {
-  About,
   BarberSettings,
-  ContactScreen,
-  FeedbackScreen,
-  NotificationSettings,
+  Notifications,
   PaymentInfo,
   PersonalInfo,
-  PreferenceSettings,
+  Preferences,
   PrivacyScreen,
   TermsScreen,
 } from '../other';
 
 const Stack = createStackNavigator();
-
-// This is  where the inline function return component warning comes from
 
 const SettingStack = () => {
   return (
@@ -28,19 +23,12 @@ const SettingStack = () => {
       <Stack.Screen name="Barber" component={BarberSettings} />
       <Stack.Screen
         name="Notifications"
-        component={NotificationSettings}
+        component={Notifications}
       />
       <Stack.Screen
         name="Preferences"
-        component={PreferenceSettings}
+        component={Preferences}
       />
-      <Stack.Screen
-        name="About"
-        component={About}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen name="Contact" component={ContactScreen} />
-      <Stack.Screen name="Feedback" component={FeedbackScreen} />
       <Stack.Screen name="TOS" component={TermsScreen} />
       <Stack.Screen name="Privacy" component={PrivacyScreen} />
     </Stack.Navigator>

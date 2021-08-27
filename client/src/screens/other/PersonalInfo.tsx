@@ -22,11 +22,21 @@ const PersonalInfo = () => {
   const { user } = useContext(UserContext);
   const [name, setName] = useState(user?.displayName ?? '');
   const [email, setEmail] = useState(user?.email ?? '');
-  const [canUpdateProfile, setCanUpdateProfile] = useState(false);
+  const [error, setError] = useState('');
 
   const { colors } = useTheme();
 
-  const updateProfile = () => {};
+  const updateProfile = (): void => {
+    if (name === '') {
+      return setError('One cannot exist without their name.');
+    }
+    if (
+      !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(email)
+    ) {
+      return setError('Please enter a valid email address.');
+    }
+    // Add cases for not having changed anything.
+  };
 
   return (
     <ProtectedScreen
@@ -51,7 +61,6 @@ const PersonalInfo = () => {
             iconName="user"
             onChangeText={(text) => {
               setName(text);
-              setCanUpdateProfile(true);
             }}
           />
           <Input
@@ -60,7 +69,6 @@ const PersonalInfo = () => {
             iconName="envelope"
             onChangeText={(text) => {
               setEmail(text);
-              setCanUpdateProfile(true);
             }}
           />
         </View>
@@ -103,7 +111,6 @@ const PersonalInfo = () => {
         title="Update Info"
         buttonStyle={{ backgroundColor: colors.primary }}
         titleStyle={{ fontWeight: 'bold' }}
-        disabled={!canUpdateProfile}
         onPress={updateProfile}
       />
       <Header style={{ marginTop: 20 }}>Other</Header>

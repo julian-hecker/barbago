@@ -18,7 +18,7 @@ const ProtectedScreen: React.FC<ProtectedScreenProps> = ({
   style,
   onRedirect,
 }) => {
-  const user = useContext(UserContext);
+  const { user } = useContext(UserContext);
   return (
     <Screen style={style}>
       <Redirect

@@ -8,9 +8,9 @@ import { UserContext } from '../context';
 
 const FeedbackScreen = () => {
   const { colors } = useTheme();
-  const user = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
-  const [email, setEmail] = useState(user.email ?? '');
+  const [email, setEmail] = useState(user?.email ?? '');
   const [category, setCategory] = useState('');
   const [message, setMessage] = useState('');
 

@@ -3,27 +3,38 @@ import firebase from 'firebase';
 
 import firebaseApp from '../config/firebase';
 
-export const UserContext = createContext<Partial<firebase.User>>({});
+interface IUserContext {
+  user: firebase.User | null;
+  signOut?: () => Promise<void>;
+}
+
+export const UserContext = createContext<IUserContext>({
+  user: null,
+});
 
 export const UserContextProvider: React.FC = ({ children }) => {
-  const [user, setUser] = useState<Partial<firebase.User>>({});
+  const [user, setUser] = useState<firebase.User | null>(null);
 
-  firebaseApp.auth().onAuthStateChanged((user) => {
-    console.log(user);
-  });
+  const signOut = async () => {
+    await firebaseApp.auth().signOut();
+  };
 
   useEffect(() => {
-    firebaseApp.auth().onAuthStateChanged((user) => {
-      if (user) {
+    const unsubscribe = firebaseApp
+      .auth()
+      .onAuthStateChanged((user) => {
         setUser(user);
-      } else {
-        setUser({});
-      }
-    });
+      });
+    return unsubscribe;
   }, []);
 
+  const value: IUserContext = {
+    user: user,
+    signOut,
+  };
+
   return (
-    <UserContext.Provider value={user}>
+    <UserContext.Provider value={value}>
       {children}
     </UserContext.Provider>
   );

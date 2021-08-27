@@ -19,9 +19,9 @@ import { UserContext } from '../../context';
 // Time to make it possible to submit changes to your user account name and photo
 
 const PersonalInfo = () => {
-  const user = useContext(UserContext);
-  const [name, setName] = useState(user.displayName ?? '');
-  const [email, setEmail] = useState(user.email ?? '');
+  const { user } = useContext(UserContext);
+  const [name, setName] = useState(user?.displayName ?? '');
+  const [email, setEmail] = useState(user?.email ?? '');
   const [canUpdateProfile, setCanUpdateProfile] = useState(false);
 
   const { colors } = useTheme();
@@ -76,7 +76,7 @@ const PersonalInfo = () => {
             style={{ position: 'relative' }}
           >
             <Image
-              source={{ uri: user.photoURL ?? '' }}
+              source={{ uri: user?.photoURL ?? '' }}
               style={{
                 width: 96,
                 height: 96,

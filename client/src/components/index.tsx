@@ -1,3 +1,4 @@
+export { default as ChangePicture } from './ChangePicture';
 export { default as ProtectedScreen } from './ProtectedScreen';
 export { default as Redirect } from './Redirect';
 export { default as Screen } from './Screen';

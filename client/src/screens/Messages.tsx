@@ -1,12 +1,12 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import { Screen, Text } from '../components';
+import { ProtectedScreen, Text } from '../components';
 
 const Messages = () => {
   return (
-    <Screen>
+    <ProtectedScreen>
       <Text>Reee</Text>
-    </Screen>
+    </ProtectedScreen>
   );
 };
 

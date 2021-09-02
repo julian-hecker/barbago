@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Dimensions } from 'react-native';
-import firebase from 'firebase/app';
 import {
   signInAsync,
   isAvailableAsync,
@@ -14,7 +13,7 @@ import {
   CryptoDigestAlgorithm,
 } from 'expo-crypto';
 
-import firebaseApp from '../../config/firebase';
+import { firebaseApp, auth } from '../../config/firebase';
 
 export const appleSignIn = async () => {
   const nonce = Math.random().toString(36).substring(2, 10);
@@ -31,7 +30,7 @@ export const appleSignIn = async () => {
       nonce: hashedNonce,
     });
     const { identityToken } = appleCredential;
-    const provider = new firebase.auth.OAuthProvider('apple.com');
+    const provider = new auth.OAuthProvider('apple.com');
     const credential = provider.credential({
       idToken: identityToken!,
       rawNonce: nonce,

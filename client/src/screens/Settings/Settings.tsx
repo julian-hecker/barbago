@@ -15,8 +15,8 @@ export const Settings = () => {
       title: 'Personal Settings',
       pages: [
         {
-          name: 'Personal Information',
-          action: () => navigation.push('Personal'),
+          name: 'Account Details',
+          action: () => navigation.push('Account'),
         },
         {
           name: 'Payment Details',

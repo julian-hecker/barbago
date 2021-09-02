@@ -1,32 +1,32 @@
 import React, { useContext, useState } from 'react';
-import {
-  Dimensions,
-  Image,
-  TouchableOpacity as Touchable,
-  View,
-} from 'react-native';
+import { Dimensions, View } from 'react-native';
 import { Button } from 'react-native-elements';
-import { useTheme } from '@react-navigation/native';
+import { useNavigation, useTheme } from '@react-navigation/native';
 
 import {
+  ChangePicture,
   ProtectedScreen,
   Header,
   Input,
   Text,
 } from '../../components';
 import { UserContext } from '../../context';
+import { db } from '../../config/firebase';
 
 // Time to make it possible to submit changes to your user account name and photo
 
 const PersonalInfo = () => {
-  const { user } = useContext(UserContext);
+  const { user, signOut } = useContext(UserContext);
+  const navigation = useNavigation();
   const [name, setName] = useState(user?.displayName ?? '');
   const [email, setEmail] = useState(user?.email ?? '');
+  const [pictureUrl, setPictureUrl] = useState(user?.photoURL ?? '');
+  const [bio, setBio] = useState('');
   const [error, setError] = useState('');
 
   const { colors } = useTheme();
 
-  const updateProfile = (): void => {
+  const handleSubmit = (): void => {
     if (name === '') {
       return setError('One cannot exist without their name.');
     }
@@ -37,6 +37,14 @@ const PersonalInfo = () => {
     }
     // Add cases for not having changed anything.
   };
+
+  // const updateProfile = (
+  //   name: string,
+  //   email: string,
+  //   bio: string,
+  // ): void => {
+  //   db.collection('users').doc(user?.uid).set({ name, email, bio });
+  // };
 
   return (
     <ProtectedScreen
@@ -78,42 +86,42 @@ const PersonalInfo = () => {
             margin: 'auto',
           }}
         >
-          <Touchable
-            // Todo: implement image uploading
-            onPress={() => alert('AAH')}
-            style={{ position: 'relative' }}
-          >
-            <Image
-              source={{ uri: user?.photoURL ?? '' }}
-              style={{
-                width: 96,
-                height: 96,
-                backgroundColor: '#777777',
-                borderRadius: 96 / 2,
-              }}
-            />
-            <Text
-              style={{
-                position: 'absolute',
-                width: 96,
-                bottom: 0,
-                textAlign: 'center',
-                backgroundColor: '#333333dd',
-                color: 'white',
-              }}
-            >
-              Change Photo
-            </Text>
-          </Touchable>
+          <ChangePicture
+            pictureUrl={pictureUrl}
+            onPress={() => alert('aaaa')}
+          />
         </View>
       </View>
       <Button
         title="Update Info"
         buttonStyle={{ backgroundColor: colors.primary }}
         titleStyle={{ fontWeight: 'bold' }}
-        onPress={updateProfile}
+        onPress={handleSubmit}
       />
-      <Header style={{ marginTop: 20 }}>Other</Header>
+      <Header style={{ marginTop: 20 }}>Authentication</Header>
+      <Button
+        title="Sign Out"
+        buttonStyle={{ backgroundColor: colors.primary }}
+        titleStyle={{ fontWeight: 'bold' }}
+        onPress={() => {
+          signOut!();
+          navigation.goBack();
+          navigation.navigate('Login');
+        }}
+      />
+      <Button
+        title="Delete Account"
+        buttonStyle={{ backgroundColor: colors.primary }}
+        titleStyle={{ fontWeight: 'bold' }}
+        onPress={async () => {
+          if (user) {
+            await db.collection('users').doc(user.uid).delete();
+            await user.delete();
+          }
+          navigation.goBack();
+          navigation.navigate('Login');
+        }}
+      />
     </ProtectedScreen>
   );
 };

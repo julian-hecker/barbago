@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
-import firebase from 'firebase/app';
 import { ResponseType } from 'expo-auth-session';
 import { useAuthRequest } from 'expo-auth-session/providers/facebook';
 import { maybeCompleteAuthSession } from 'expo-web-browser';
 
 import { Button } from '../../components';
-import firebaseApp from '../../config/firebase';
+import { auth, firebaseApp } from '../../config/firebase';
 
 maybeCompleteAuthSession();
 
@@ -19,7 +18,7 @@ export const FacebookAuthComponent = () => {
     if (response?.type === 'success') {
       const { access_token } = response.params;
       const credential =
-        firebase.auth.FacebookAuthProvider.credential(access_token);
+        auth.FacebookAuthProvider.credential(access_token);
       firebaseApp
         .auth()
         .signInWithCredential(credential)

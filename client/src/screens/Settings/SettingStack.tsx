@@ -6,7 +6,7 @@ import {
   BarberSettings,
   Notifications,
   PaymentInfo,
-  PersonalInfo,
+  Account,
   Preferences,
   PrivacyScreen,
   TermsScreen,
@@ -18,17 +18,11 @@ const SettingStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Settings" component={Settings} />
-      <Stack.Screen name="Personal" component={PersonalInfo} />
+      <Stack.Screen name="Account" component={Account} />
       <Stack.Screen name="Payment" component={PaymentInfo} />
       <Stack.Screen name="Barber" component={BarberSettings} />
-      <Stack.Screen
-        name="Notifications"
-        component={Notifications}
-      />
-      <Stack.Screen
-        name="Preferences"
-        component={Preferences}
-      />
+      <Stack.Screen name="Notifications" component={Notifications} />
+      <Stack.Screen name="Preferences" component={Preferences} />
       <Stack.Screen name="TOS" component={TermsScreen} />
       <Stack.Screen name="Privacy" component={PrivacyScreen} />
     </Stack.Navigator>

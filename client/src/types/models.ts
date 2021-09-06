@@ -1,8 +1,10 @@
 type UID = string;
 
-
 export interface User {
-  uid: UID;
+  bio: string;
+  name: string;
+  phone: string;
+  picture: string;
 }
 
 export interface Barber {

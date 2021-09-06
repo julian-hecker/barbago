@@ -11,7 +11,7 @@ import {
   Text,
 } from '../../components';
 import { UserContext } from '../../context';
-import { db } from '../../config/firebase';
+import { db, usersTable } from '../../config/firebase';
 
 // Time to make it possible to submit changes to your user account name and photo
 
@@ -43,7 +43,7 @@ const PersonalInfo = () => {
   //   email: string,
   //   bio: string,
   // ): void => {
-  //   db.collection('users').doc(user?.uid).set({ name, email, bio });
+  //   usersTable.doc(user?.uid).set({ name, email, bio });
   // };
 
   return (
@@ -115,7 +115,7 @@ const PersonalInfo = () => {
         titleStyle={{ fontWeight: 'bold' }}
         onPress={async () => {
           if (user) {
-            await db.collection('users').doc(user.uid).delete();
+            await usersTable.doc(user.uid).delete();
             await user.delete();
           }
           navigation.goBack();

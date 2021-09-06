@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useContext, useState } from 'react';
 import { Button, GestureResponderEvent } from 'react-native';
 
@@ -8,11 +9,12 @@ import {
   Redirect,
   Text,
 } from '../components';
-import { db } from '../config/firebase';
+import { db, usersTable } from '../config/firebase';
 import { UserContext } from '../context';
 
 const Signup: React.FC = () => {
-  const { user, dbUser } = useContext(UserContext);
+  const navigation = useNavigation();
+  const { user } = useContext(UserContext);
 
   const [name, setName] = useState(user?.displayName ?? '');
   const [picture, setPicture] = useState(user?.photoURL ?? '');
@@ -26,15 +28,15 @@ const Signup: React.FC = () => {
 
   const signup = async () => {
     if (user) {
-      // console.log(db.collection('users').doc(user.uid));
-      db.collection('users').doc(user.uid).set({
+      // console.log(usersTable.doc(user.uid));
+      usersTable.doc(user.uid).set({
         name,
         picture,
         phone,
         bio,
       });
     } else {
-      // Not Authenticated
+      // Not Authenticated; create a toast message and redirect to login
     }
   };
 
@@ -48,7 +50,8 @@ const Signup: React.FC = () => {
       }}
     >
       {/* Redirect to home if there's already a db user */}
-      <Redirect condition={!!dbUser} route={'Main'} />
+      {/* <Redirect condition={!!dbUser} route={'Main'} /> */}
+      <Redirect condition={false} route={'Main'} />
       {/* Otherwise allow user to configure fields like name, pic, etc. */}
       <Header>Register Account Details</Header>
       <Input
